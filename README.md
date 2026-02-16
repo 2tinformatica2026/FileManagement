@@ -16,7 +16,7 @@ Requires Bootstrap 5.X
         {
             if (file != null)
             {
-                var buffer = Northwind.FileUpload.UploadedFiles.ToArray(file);
+                var buffer = [Application Name].FileUpload.UploadedFiles.ToArray(file);
             }
             //return StatusCode(StatusCodes.Status500InternalServerError);
             return Ok();
