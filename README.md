@@ -48,8 +48,6 @@ Requires Bootstrap 5.X
             catch { return StatusCode(StatusCodes.Status500InternalServerError); }
         }
 
-
-
-
+![example](https://github.com/user-attachments/assets/90dfb45f-6daa-493c-a957-09ba27482471)
 
 The two specialized javascript classes handle both the progression bar and the cancellation of the ajax call.
