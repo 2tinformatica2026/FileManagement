@@ -1,9 +1,13 @@
 <div class="row">
     <div class="col-7 col-md-5 col-lg-4">
         <label>File Upload</label>
-        <div class="input-group" data-fileupload data-url="/Home/FileUpload" data-delete-url="/home/DeleteUploadedFile">
+        <div class="input-group" 
+             data-fileupload 
+             data-url="/Home/FileUpload" 
+             data-delete-url="/home/DeleteUploadedFile"
+             data-download-url="/Home/FileDownload?ProductId=77&DocumentId=1&">
             <input type="file" class="form-control" />
-            <span class="form-control border border-1 rounded rounded-2 d-none" data-file-name></span>
+            <input class="form-control bg-white border border-1 rounded rounded-2 d-none" readonly data-file-name />
             <span class="bi bi-exclamation mt-auto mb-auto p-0 fs-4 text-danger d-none"></span>
             <span class="mt-auto mb-auto ms-2 d-none" data-progress-bar></span>
             <img class="hourglass hourglass-sm ddropdown-hourglass d-none" />
