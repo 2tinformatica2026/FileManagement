@@ -103,6 +103,7 @@ class FileUpload {
                     var progress = container.querySelector('span[data-progress-bar]');
                     var hourglass = container.querySelector('img.hourglass');
                     var abortbutton = container.querySelector('span[data-abort]');
+                    var deletebutton = container.querySelector('span[data-delete]');
                     var error = container.querySelector('span.bi.bi-exclamation');
                     switch (downloadurl == '') {
                         case true:
@@ -110,7 +111,7 @@ class FileUpload {
                             This.#saveOrOpenFile(file.files[0], file.files[0].name);
                             break;
                         case false:
-                            This.#download(downloadurl, Token, progress, hourglass, abortbutton, e.target, error);
+                            This.#download(downloadurl, Token, progress, hourglass, abortbutton, deletebutton, e.target, error);
                             break;
                     }
                 });
@@ -239,7 +240,7 @@ class FileUpload {
             xhr.send(fileData);
         }
     }
-    #download(url, Token, progressbar, hourglass, abortbutton, downloadbutton, error) {
+    #download(url, Token, progressbar, hourglass, abortbutton, deletebutton, downloadbutton, error) {
         const This = this;
         const xhr = new XMLHttpRequest();
         var perc = 0;
@@ -254,6 +255,7 @@ class FileUpload {
             }
             if (xhr.readyState == 4) {
                 progressbar.innerHTML = '';
+                deletebutton.classList.remove('d-none');
                 downloadbutton.classList.remove('d-none');
                 if (!progressbar.classList.contains('d-none')) progressbar.classList.add('d-none');
                 if (!hourglass.classList.contains('d-none')) hourglass.classList.add('d-none');
@@ -287,6 +289,7 @@ class FileUpload {
                 xhr.abort();
             };
         }
+        deletebutton.classList.add('d-none');
         downloadbutton.classList.add('d-none');
         xhr.send();
     }
