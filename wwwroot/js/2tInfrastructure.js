@@ -165,6 +165,7 @@ class FileUpload {
         }
     }
     #delete(url, Token, file, filename, error, deletebutton, downloadbutton) {
+        const SuccessfulDelete = new Event('SuccessfulDelete', { bubbles: true, cancelable: true, composed: false })
         const xhr = new XMLHttpRequest();
         xhr.open('delete', url);
         if (Token != null) xhr.setRequestHeader('Authorization', Token);
@@ -175,6 +176,7 @@ class FileUpload {
                 file.value = '';
                 file.classList.remove('d-none');
                 downloadbutton.classList.add('d-none');
+                document.dispatchEvent(SuccessfulDelete);
             } else {
                 deletebutton.classList.remove('d-none');
                 error.classList.remove('d-none');
@@ -184,6 +186,7 @@ class FileUpload {
         xhr.send();
     }
     #upload(url, downloadurl, Token, file, filename, error, progress, spinner, abortbutton, deletebutton, downloadbutton) {
+        const SuccessfulUpload = new Event('SuccessfulUpload', { bubbles: true, cancelable: true, composed: false })
         if (file.files.length > 0) {
             var aborted = false;
             const xhr = new XMLHttpRequest();
@@ -202,6 +205,7 @@ class FileUpload {
                     file.classList.add('d-none');
                     if (downloadurl != '') file.value = '';
                     downloadbutton.classList.remove('d-none');
+                    document.dispatchEvent(SuccessfulUpload);
                 } else if (!aborted) {
                     error.classList.remove('d-none');
                     file.value = '';
