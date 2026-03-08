@@ -1,7 +1,8 @@
 # FileManagement
 Upload, Download, delete file.
 
-Requires Bootstrap 5.X 
+Requires Bootstrap 5.3.max
+
 Our solution allows you to quickly implement document management in all those cases where the keys are known in advance.
 
 Some common examples:
