@@ -1,56 +1,22 @@
 # FileManagement
-Upload, Download file using convenient javascript classes
+Upload, Download, delete file.
 
-Requires Bootstrap 5.X 
+Requires Bootstrap 5.3.max
+
+Our solution allows you to quickly implement document management in all those cases where the keys are known in advance.
+
+Some common examples:
+
+- Customer and supplier records;
+- Product sheets;
+- Curriculum vitae;
+- 
+etc
+
+<img width="790" height="188" alt="Suppliers" src="https://github.com/user-attachments/assets/90e5317e-b50a-444f-a48b-1fbedd21204d" />
+
+<img width="1041" height="292" alt="Suppliers" src="https://github.com/user-attachments/assets/7531229e-0a4c-4947-9bac-b7189c227182" />
+
+<img width="1041" height="207" alt="Suppliers" src="https://github.com/user-attachments/assets/cb5dfd19-2668-4bc2-92f3-510214c783a5" />
 
 
-        // services
-        [HttpDelete]
-        public IActionResult DeleteUploadedFile(int FileId)
-        {
-           //do something
-           return Ok();
-        }
-
-        [HttpPost]
-        public IActionResult FileUpload(IFormFile file)
-        {
-            if (file != null)
-            {
-                var buffer = [Application Name].FileUpload.UploadedFiles.ToArray(file);
-                //do something
-            }
-            //return StatusCode(StatusCodes.Status500InternalServerError);
-            return Ok();
-        }
-
-        [HttpGet]
-        public IActionResult FileDownload(int ProductId, int DocumentId)
-        {
-            try
-            {
-                using (var db = new [some database].Database())
-                {
-                    var document = (from pd in db.productsDocuments
-                                    where pd.ProductID == ProductId && pd.DocumentID == DocumentId
-                                    select new
-                                    {
-                                        FileName = pd.FileName,
-                                        MimeType = pd.MimeType,
-                                        Buffer = pd.Buffer,
-                                    }).FirstOrDefault();
-                    if (document != null)
-                    {
-                        return File(document.Buffer, document.MimeType, document.FileName);
-                    }
-                    else return StatusCode(StatusCodes.Status204NoContent);
-                }
-
-            }
-            catch { return StatusCode(StatusCodes.Status500InternalServerError); }
-        }
-      
-
-![example](https://github.com/user-attachments/assets/90dfb45f-6daa-493c-a957-09ba27482471)
-
-The two specialized javascript classes handle both the progression bar and the cancellation of the ajax call.
