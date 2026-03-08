@@ -1,6 +1,6 @@
-﻿namespace [Application Name].FileUpload
+﻿namespace [Application Name].File
 {
-    public class UploadedFiles
+    public class UploadedFileReader
     {
         public static MemoryStream ToMemoryStream(IFormFile file)
         {

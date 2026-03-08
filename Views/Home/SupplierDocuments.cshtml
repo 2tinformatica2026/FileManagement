@@ -1,0 +1,91 @@
+@using ["application name"].Models.Supplier;
+@model SupplierDocumentsEditor
+
+<partial name="~/Views/Shared/_ConfirmBox.cshtml" />
+
+<h3>
+    <i class="bi-shop-window me-2 text-primary"></i>
+    <label class="form-label text-primary">@Model.CompanyName</label>
+</h3>
+<br />
+
+<form method="post" asp-controller="Home" asp-action="SupplierDocuments">
+    <input type="hidden" asp-for="@Model.SupplierID" />
+    <input type="hidden" asp-for="@Model.CompanyName" />
+
+    <div class="row">
+        <div class="col-7 col-md-5 col-lg-4">
+            <label>Presentation</label>
+            <div class="input-group"
+                 data-fileupload
+                 data-group=""
+                 data-json-key="@Model.JsonKey(SuppliersDocumentsKey.documentType.CompanyPresentation)">
+                <input type="file" class="form-control" />
+                <input class="form-control bg-white border border-1 rounded rounded-2 d-none" readonly data-file-name data-file-footprint />
+                <span class="bi bi-exclamation mt-auto mb-auto p-0 fs-4 text-danger d-none"></span>
+                <span class="mt-auto mb-auto ms-2 d-none" data-progress-bar></span>
+                <img class="hourglass hourglass-sm ddropdown-hourglass d-none" />
+                <span class="mt-auto mb-auto ms-2 btn btn-close d-none" data-abort></span>
+                <span class="btn bi bi-download fs-5 ms-2 p-0 d-none" data-download></span>
+                <span class="mt-auto mb-auto ms-2 p-0 btn bi bi-trash d-none" data-delete></span>
+            </div>
+        </div>
+
+        <div class="col-7 col-md-5 col-lg-4">
+            <label>Products List</label>
+            <div class="input-group"
+                 data-fileupload
+                 data-group=""
+                 data-json-key="@Model.JsonKey(SuppliersDocumentsKey.documentType.ProductsList)">
+                <input type="file" class="form-control" />
+                <input class="form-control bg-white border border-1 rounded rounded-2 d-none" readonly data-file-name data-file-footprint />
+                <span class="bi bi-exclamation mt-auto mb-auto p-0 fs-4 text-danger d-none"></span>
+                <span class="mt-auto mb-auto ms-2 d-none" data-progress-bar></span>
+                <img class="hourglass hourglass-sm ddropdown-hourglass d-none" />
+                <span class="mt-auto mb-auto ms-2 btn btn-close d-none" data-abort></span>
+                <span class="btn bi bi-download fs-5 ms-2 p-0 d-none" data-download></span>
+                <span class="mt-auto mb-auto ms-2 p-0 btn bi bi-trash d-none" data-delete></span>
+            </div>
+        </div>
+
+        <div class="col-7 col-md-5 col-lg-4">
+            <label>Company Organization</label>
+            <div class="input-group"
+                 data-fileupload
+                 data-group=""
+                 data-json-key="@Model.JsonKey(SuppliersDocumentsKey.documentType.CompanyOrganization)">
+                <input type="file" class="form-control" />
+                <input class="form-control bg-white border border-1 rounded rounded-2 d-none" readonly data-file-name data-file-footprint />
+                <span class="bi bi-exclamation mt-auto mb-auto p-0 fs-4 text-danger d-none"></span>
+                <span class="mt-auto mb-auto ms-2 d-none" data-progress-bar></span>
+                <img class="hourglass hourglass-sm ddropdown-hourglass d-none" />
+                <span class="mt-auto mb-auto ms-2 btn btn-close d-none" data-abort></span>
+                <span class="btn bi bi-download fs-5 ms-2 p-0 d-none" data-download></span>
+                <span class="mt-auto mb-auto ms-2 p-0 btn bi bi-trash d-none" data-delete></span>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <input type="submit" value="let's do something" />
+
+</form>
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/2tInfrastructure.js" asp-append-version="true"></script>
+
+<script type="text/javascript">
+    const confirm = new ConfirmBox();
+    new FileUpload('','','@Model.InsertUrl','@Model.DeleteUrl','@Model.DownloadUrl','@Model.FileNameUrl');
+    addEventListener('fuBeforeDeleteFile',function(e){
+            e.cancel = true;
+            confirm.Show('delete',e.params,'Are you sure?', 'you are deleting the file "' + e.params.filename.value + '"', 'Yes, do it', 'Cancel',confirm.iconType.information);
+    });
+    addEventListener('OnConfirmBox',function(e){
+        switch (e.context){
+            case 'delete':
+                new FileUploadDelete().delete(e.params);
+            break;
+        }
+    });
+</script>
