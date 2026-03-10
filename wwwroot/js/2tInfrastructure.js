@@ -1,6 +1,223 @@
-class FileUploadDelete {
-    constructor() { }
-    delete(params) {
+class FileUpload {
+    #Token;
+    #Group;
+    #InsertUrl;
+    #DownloadUrl;
+    #FileNameUrl;
+    constructor(Token, Group, InsertUrl, DeleteUrl, DownloadUrl, FileNameUrl, LoadFileNameAndFootprint=true) {
+        this.#Token = Token;
+        this.#Group = Group;
+        this.#InsertUrl = InsertUrl;
+        this.#DownloadUrl = DownloadUrl;
+        this.#FileNameUrl = FileNameUrl;
+        var containers = document.querySelectorAll('div[data-fileupload][data-group="' + Group + '"]');
+        if (containers.length > 0) {
+            var This = this;
+            for (var i = 0; i < containers.length; i++) {
+                //download
+                var btnDownload = containers[i].querySelector('span[data-download]');
+                btnDownload.addEventListener('click', function (e) {
+                    var container = e.target.parentElement;
+                    This.#download(container);
+                });
+                //delete
+                var deletebutton = containers[i].querySelector('span[data-delete]');
+                deletebutton.addEventListener('click', function (e) {
+                    var container = e.target.parentElement;
+                    var params = This.#RetriveParams(DeleteUrl, container); 
+                    var fuBeforeDeleteFile = new Event('fuBeforeDeleteFile', { bubbles: true, cancelable: true, composed: false })
+                    fuBeforeDeleteFile.cancel = false;
+                    fuBeforeDeleteFile.params = params;
+                    document.dispatchEvent(fuBeforeDeleteFile);
+                    if (!fuBeforeDeleteFile.cancel) { This.deletefile(params); }
+                });
+                //upload
+                var file = containers[i].querySelector('input[type="file"]');
+                file.addEventListener('change', function (e) {
+                    var file = e.target;
+                    var container = file.parentElement;
+                    This.#upload(container);
+                });
+                //set initial configuration
+                if (LoadFileNameAndFootprint) this.#FileNameAndFootprint(containers[i]);
+            }
+        }
+    }
+    #RetriveParams(url, container) {
+        var file = container.querySelector('input[type="file"]');
+        var filename = container.querySelector('input[data-file-name]');
+        var urlparams = new URLSearchParams(JSON.parse(container.getAttribute('data-json-key'))).toString();
+        var progressbar = container.querySelector('span[data-progress-bar]');
+        var hourglass = container.querySelector('img.hourglass');
+        var downloadbutton = container.querySelector('span[data-download]');
+        var abortbutton = container.querySelector('span[data-abort]');
+        var deletebutton = container.querySelector('span[data-delete]');
+        var error = container.querySelector('span.bi.bi-exclamation');
+        urlparams = url + '?' + urlparams;
+
+        var params = {
+            url: urlparams,
+            Token: this.#Token,
+            file: file,
+            filename: filename,
+            downloadbutton: downloadbutton,
+            deletebutton: deletebutton,
+            abortbutton: abortbutton,
+            error: error,
+            progressbar: progressbar,
+            hourglass: hourglass
+        };
+
+        return params;
+
+    }
+    #upload(container) {
+        const SuccessfulUpload = new Event('SuccessfulUpload', { bubbles: true, cancelable: true, composed: false })
+        var params = this.#RetriveParams(this.#InsertUrl, container);
+        if (params.file.files.length > 0) {
+            var aborted = false;
+            const xhr = new XMLHttpRequest();
+            xhr.open('post', params.url);
+            xhr.responseType = 'json';
+            if (this.#Token != null && this.#Token != '') xhr.setRequestHeader('Authorization', this.#Token);
+            var fileData = new FormData();
+            fileData.append('file', params.file.files[0], params.file.files[0].name);
+            xhr.onloadend = function () {
+                if (!params.hourglass.classList.contains('d-none')) params.hourglass.classList.add('d-none');
+                if (!params.abortbutton.classList.contains('d-none')) params.abortbutton.classList.add('d-none');
+                if (!params.progressbar.classList.contains('d-none')) params.progressbar.classList.add('d-none');
+
+                switch (xhr.status) {
+                    case 200:
+                        params.deletebutton.classList.remove('d-none');
+                        params.filename.value = xhr.response.filename;
+                        params.filename.setAttribute('data-file-footprint', xhr.response.footprint);
+                        params.filename.classList.remove('d-none');
+                        params.file.classList.add('d-none');
+                        params.file.value = '';
+                        params.downloadbutton.classList.remove('d-none');
+                        document.dispatchEvent(SuccessfulUpload);
+                        break;
+                    case 409:
+                        params.error.classList.remove('d-none');
+                        params.deletebutton.classList.remove('d-none');
+                        params.filename.value = xhr.response.filename;
+                        params.filename.setAttribute('data-file-footprint', xhr.response.footprint);
+                        params.filename.classList.remove('d-none');
+                        params.file.classList.add('d-none');
+                        params.file.value = '';
+                        params.downloadbutton.classList.remove('d-none');
+                        break;
+                    default:
+                        if (!aborted) {
+                            params.error.classList.remove('d-none');
+                            params.file.value = '';
+                        };                        
+                }
+            }
+            xhr.upload.onloadstart = function () {
+                if (!params.error.classList.contains('d-none')) params.error.classList.add('d-none');
+                params.progressbar.classList.remove('d-none');
+                params.abortbutton.classList.remove('d-none');
+                params.abortbutton.onclick = function () {
+                    aborted = true;
+                    params.progressbar.classList.add('d-none');
+                    params.abortbutton.classList.add('d-none');
+                    params.file.value = '';
+                    xhr.abort();
+                };
+            }
+            xhr.upload.onprogress = function (e) {
+                if (e.total > 0) {
+                    const perc = Math.round((e.loaded / e.total) * 100);
+                    params.progressbar.innerHTML = perc + '%';
+                    if (perc == 100) {
+                        params.abortbutton.classList.add('d-none');
+                        params.progressbar.classList.add('d-none');
+                        params.hourglass.classList.remove('d-none');
+                    }
+                } else {
+                    params.progressbar.innerHTML = Math.round(e.loaded / 1000) + ' Mb downloaded';
+                }
+            }
+            xhr.send(fileData);
+        }
+    }
+    #download(container) {
+        const This = this;
+        const xhr = new XMLHttpRequest();
+        var perc = 0;
+        var aborted = false;
+        var params = this.#RetriveParams(this.#DownloadUrl, container);
+        xhr.open('get', params.url);
+        if (this.#Token != null && this.#Token != '') xhr.setRequestHeader('Authorization', this.#Token);
+        xhr.responseType = 'blob';
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 3 && perc == 0) {
+                params.hourglass.classList.add('d-none')
+                params.progressbar.classList.remove('d-none'); }
+            if (xhr.readyState == 4) {
+                params.progressbar.innerHTML = '';
+                if (!params.progressbar.classList.contains('d-none')) params.progressbar.classList.add('d-none');
+                if (!params.hourglass.classList.contains('d-none')) params.hourglass.classList.add('d-none');
+                if (!params.abortbutton.classList.contains('d-none')) params.abortbutton.classList.add('d-none');
+                switch (xhr.status) {
+                    case 200:
+                        setTimeout(function () {
+                            params.downloadbutton.classList.remove('d-none');
+                            params.deletebutton.classList.remove('d-none');
+                        }, 100);
+                        var RecoveredFileName = This.#GetFileNameFromHeader(xhr.getResponseHeader('content-disposition'));
+                        var footprint = xhr.getResponseHeader('footprint');
+                        var currentfootprint = params.filename.getAttribute('data-file-footprint');
+                        if (footprint != currentfootprint || params.filename.value != RecoveredFileName) {
+                            params.error.classList.remove('d-none');
+                            params.filename.value = RecoveredFileName;
+                            params.filename.setAttribute('data-file-footprint', footprint);
+                        }
+                        This.#saveOrOpenFile(xhr.response, RecoveredFileName);
+                        break;
+                    case 204: // no file
+                        params.error.classList.remove('d-none');
+                        params.filename.value = '';
+                        params.filename.setAttribute('data-file-footprint', '');
+                        params.filename.classList.add('d-none');
+                        params.file.classList.remove('d-none');
+                        break;
+                    default:
+                        setTimeout(function () {
+                            params.downloadbutton.classList.remove('d-none');
+                            params.deletebutton.classList.remove('d-none');
+                        }, 100);
+                        if (!aborted) params.error.classList.remove('d-none');
+                }
+            }
+        }
+        xhr.onprogress = function (e) {
+            if (e.total > 0) {
+                perc = Math.round((e.loaded / e.total) * 100);
+                params.progressbar.innerHTML = perc + '%';
+            } else {
+                params.progressbar.innerHTML = Math.round(e.loaded / 1024) + ' Kb downloaded';
+            }
+        }
+        if (params.hourglass != null) params.hourglass.classList.remove('d-none');
+        if (params.abortbutton != null) {
+            params.abortbutton.classList.remove('d-none');
+            params.abortbutton.onclick = function (e) {
+                aborted = true;
+                e.stopPropagation();
+                params.abortbutton.classList.add('d-none');
+                xhr.abort();
+            };
+        }
+        if (!params.error.classList.contains('d-none')) params.error.classList.add('d-none');
+        params.deletebutton.classList.add('d-none');
+        params.downloadbutton.classList.add('d-none');
+        if (!params.error.classList.contains('d-none')) params.error.classList.add('d-none');
+        xhr.send();
+    }
+    deletefile(params) {
         var fuDeleted = new Event('fuDeleted', { bubbles: true, cancelable: true, composed: false })
         const xhr = new XMLHttpRequest();
         xhr.open('delete', params.url);
@@ -14,7 +231,7 @@ class FileUploadDelete {
                     params.file.value = '';
                     params.file.classList.remove('d-none');
                     params.downloadbutton.classList.add('d-none');
-                    if (xhr.status==200) document.dispatchEvent(fuDeleted);
+                    if (xhr.status == 200) document.dispatchEvent(fuDeleted);
                     break;
                 default:
                     params.deletebutton.classList.remove('d-none');
@@ -25,241 +242,48 @@ class FileUploadDelete {
         params.deletebutton.classList.add('d-none');
         xhr.send();
     }
-}
-class FileUpload extends FileUploadDelete {
-    constructor(Token, Group, InsertUrl, DeleteUrl, DownloadUrl, FileNameUrl) {
-        super();
-        var containers = document.querySelectorAll('div[data-fileupload][data-group="'+ Group + '"]');
-        if (containers != null) {
-            var This = this;
+    refresh() {
+        var containers = document.querySelectorAll('div[data-fileupload][data-group="' + this.#Group + '"]');
+        if (containers.length > 0) 
             for (var i = 0; i < containers.length; i++) {
-                //download
-                var btnDownload = containers[i].querySelector('span[data-download]');
-                btnDownload.addEventListener('click', function (e) {
-                    var container = e.target.parentElement;
-                    var file = container.querySelector('input[type="file"]');
-                    var filename = container.querySelector('input[data-file-name]');
-                    var urlparams = new URLSearchParams(JSON.parse(container.getAttribute('data-json-key'))).toString();
-                    var progress = container.querySelector('span[data-progress-bar]');
-                    var hourglass = container.querySelector('img.hourglass');
-                    var abortbutton = container.querySelector('span[data-abort]');
-                    var deletebutton = container.querySelector('span[data-delete]');
-                    var error = container.querySelector('span.bi.bi-exclamation');
-                    This.#download(DownloadUrl + '?' + urlparams, Token, file, filename, progress, hourglass, abortbutton, deletebutton, e.target, error);
-                });
-                //delete
-                var deletebutton = containers[i].querySelector('span[data-delete]');
-                deletebutton.addEventListener('click', function (e) {
-                    var container = e.target.parentElement;
-                    var filename = container.querySelector('input[data-file-name]');
-                    var file = container.querySelector('input[type="file"]');
-                    var error = container.querySelector('span.bi.bi-exclamation');
-                    var downloadbutton = container.querySelector('span[data-download]');
-                    var dataurlparams = new URLSearchParams(JSON.parse(container.getAttribute('data-json-key'))).toString();
-                    var params = {
-                        url: DeleteUrl + '?' + dataurlparams,
-                        Token: Token,
-                        file: file,
-                        filename: filename,
-                        error: error,
-                        deletebutton: e.target,
-                        downloadbutton: downloadbutton
-                    };
-                    var fuBeforeDeleteFile = new Event('fuBeforeDeleteFile', { bubbles: true, cancelable: true, composed: false })
-                    fuBeforeDeleteFile.cancel = false;
-                    fuBeforeDeleteFile.params = params;
-                    document.dispatchEvent(fuBeforeDeleteFile);
-                    if (!fuBeforeDeleteFile.cancel) { This.delete(params); }
-                });
-                //upload
-                var file = containers[i].querySelector('input[type="file"]');
-                file.addEventListener('change', function (e) {
-                    var file = e.target;
-                    var container = file.parentElement;
-                    var dataurlparams = new URLSearchParams(JSON.parse(container.getAttribute('data-json-key'))).toString();
-                    var error = container.querySelector('span.bi.bi-exclamation');
-                    var progress = container.querySelector('span[data-progress-bar]');
-                    var hourglass = container.querySelector('img.hourglass');
-                    var abortbutton = container.querySelector('span[data-abort]');
-                    var deletebutton = container.querySelector('span[data-delete]');
-                    var filename = container.querySelector('input[data-file-name]');
-                    var downloadbutton = container.querySelector('span[data-download]');
-                    This.#upload(InsertUrl + '?' + dataurlparams, Token, file, filename, error, progress, hourglass, abortbutton, deletebutton, downloadbutton);
-                });
-                //set initial configuration
-                if (FileNameUrl != null && FileNameUrl != '') {
-                    var filename = containers[i].querySelector('input[data-file-name]');
-                    var error = containers[i].querySelector('span.bi.bi-exclamation');
-                    var urlparams = new URLSearchParams(JSON.parse(containers[i].getAttribute('data-json-key'))).toString();
-                    this.#FileNameAndFootprint(FileNameUrl + '?' + urlparams, Token, filename, btnDownload, deletebutton, file, error);
-                }
-            }
-        }
+                this.#FileNameAndFootprint(containers[i]);
+            } 
     }
-    #upload(url, Token, file, filename, error, progress, hourglass, abortbutton, deletebutton, downloadbutton) {
-        const SuccessfulUpload = new Event('SuccessfulUpload', { bubbles: true, cancelable: true, composed: false })
-        if (file.files.length > 0) {
-            var aborted = false;
-            const xhr = new XMLHttpRequest();
-            xhr.open('post', url);
-            xhr.responseType = 'json';
-            if (Token != null && Token != '') xhr.setRequestHeader('Authorization', Token);
-            var fileData = new FormData();
-            fileData.append('file', file.files[0], file.files[0].name);
-            xhr.onloadend = function () {
-                if (!hourglass.classList.contains('d-none')) hourglass.classList.add('d-none');
-                if (!abortbutton.classList.contains('d-none')) abortbutton.classList.add('d-none');
-                if (!progress.classList.contains('d-none')) progress.classList.add('d-none');
-
-                switch (xhr.status) {
-                    case 200:
-                        deletebutton.classList.remove('d-none');
-                        filename.value = xhr.response.filename;
-                        filename.setAttribute('data-file-footprint', xhr.response.footprint);
-                        filename.classList.remove('d-none');
-                        file.classList.add('d-none');
-                        file.value = '';
-                        downloadbutton.classList.remove('d-none');
-                        document.dispatchEvent(SuccessfulUpload);
-                        break;
-                    case 409:
-                        error.classList.remove('d-none');
-                        deletebutton.classList.remove('d-none');
-                        filename.value = xhr.response.filename;
-                        filename.setAttribute('data-file-footprint', xhr.response.footprint);
-                        filename.classList.remove('d-none');
-                        file.classList.add('d-none');
-                        file.value = '';
-                        downloadbutton.classList.remove('d-none');
-                        break;
-                    default:
-                        if (!aborted) {
-                            error.classList.remove('d-none');
-                            file.value = '';
-                        };                        
-                }
-            }
-            xhr.upload.onloadstart = function () {
-                if (!error.classList.contains('d-none')) error.classList.add('d-none');
-                progress.classList.remove('d-none');
-                abortbutton.classList.remove('d-none');
-                abortbutton.onclick = function () {
-                    aborted = true;
-                    progress.classList.add('d-none');
-                    abortbutton.classList.add('d-none');
-                    file.value = '';
-                    xhr.abort();
-                };
-            }
-            xhr.upload.onprogress = function (e) {
-                if (e.total > 0) {
-                    const perc = Math.round((e.loaded / e.total) * 100);
-                    progress.innerHTML = perc + '%';
-                    if (perc == 100) {
-                        abortbutton.classList.add('d-none');
-                        progress.classList.add('d-none');
-                        hourglass.classList.remove('d-none');
-                    }
-                } else {
-                    progress.innerHTML = Math.round(e.loaded / 1000) + ' Mb downloaded';
-                }
-            }
-            xhr.send(fileData);
-        }
-    }
-    #download(url, Token, file, filename, progressbar, hourglass, abortbutton, deletebutton, downloadbutton, error) {
-        const This = this;
+    #FileNameAndFootprint(container) {
+        var params = this.#RetriveParams(this.#FileNameUrl, container);
         const xhr = new XMLHttpRequest();
-        var perc = 0;
-        var aborted = false;
-        xhr.open('get', url);
-        if (Token != null && Token !='') xhr.setRequestHeader('Authorization', Token);
-        xhr.responseType = 'blob';
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 3 && perc == 0) {
-                hourglass.classList.add('d-none')
-                progressbar.classList.remove('d-none'); }
-            if (xhr.readyState == 4) {
-                progressbar.innerHTML = '';
-                if (!progressbar.classList.contains('d-none')) progressbar.classList.add('d-none');
-                if (!hourglass.classList.contains('d-none')) hourglass.classList.add('d-none');
-                if (!abortbutton.classList.contains('d-none')) abortbutton.classList.add('d-none');
-                switch (xhr.status) {
-                    case 200:
-                        setTimeout(function () {
-                            downloadbutton.classList.remove('d-none');
-                            deletebutton.classList.remove('d-none');
-                        }, 100);
-                        var RecoveredFileName = This.#GetFileNameFromHeader(xhr.getResponseHeader('content-disposition'));
-                        var footprint = xhr.getResponseHeader('footprint');
-                        var currentfootprint = filename.getAttribute('data-file-footprint');
-                        if (footprint != currentfootprint || filename.value != RecoveredFileName) {
-                            error.classList.remove('d-none');
-                            filename.value = RecoveredFileName;
-                            filename.setAttribute('data-file-footprint', footprint);
-                        }
-                        This.#saveOrOpenFile(xhr.response, RecoveredFileName);
-                        break;
-                    case 204: // no file
-                        error.classList.remove('d-none');
-                        filename.value = '';
-                        filename.setAttribute('data-file-footprint', '');
-                        filename.classList.add('d-none');
-                        file.classList.remove('d-none');
-                        break;
-                    default:
-                        setTimeout(function () {
-                            downloadbutton.classList.remove('d-none');
-                            deletebutton.classList.remove('d-none');
-                        }, 100);
-                        if (!aborted) error.classList.remove('d-none');
-                }
-            }
-        }
-        xhr.onprogress = function (e) {
-            if (e.total > 0) {
-                perc = Math.round((e.loaded / e.total) * 100);
-                progressbar.innerHTML = perc + '%';
-            } else {
-                progressbar.innerHTML = Math.round(e.loaded / 1024) + ' Kb downloaded';
-            }
-        }
-        if (hourglass != null) hourglass.classList.remove('d-none');
-        if (abortbutton != null) {
-            abortbutton.classList.remove('d-none');
-            abortbutton.onclick = function (e) {
-                aborted = true;
-                e.stopPropagation();
-                abortbutton.classList.add('d-none');
-                xhr.abort();
-            };
-        }
-        if (!error.classList.contains('d-none')) error.classList.add('d-none');
-        deletebutton.classList.add('d-none');
-        downloadbutton.classList.add('d-none');
-        if (!error.classList.contains('d-none')) error.classList.add('d-none');
-        xhr.send();
-    }
-    #FileNameAndFootprint(url, Token, filename, btnDownload, deletebutton, file, error) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('get', url);
-        if (Token != null && Token != '') xhr.setRequestHeader('Authorization', Token);
+        xhr.open('get', params.url);
+        if (this.#Token != null && this.#Token != '') xhr.setRequestHeader('Authorization', this.#Token);
         xhr.responseType = 'json';
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    if (xhr.response != null) {
-                        filename.value = xhr.response.filename;
-                        filename.setAttribute('data-file-footprint', xhr.response.footprint);
-                        filename.classList.remove('d-none');
-                        btnDownload.classList.remove('d-none');
-                        deletebutton.classList.remove('d-none');
-                        file.classList.add('d-none');
-                    }
+                var currentfilename = params.filename.value;
+                var currentfootprint = params.filename.getAttribute('data-file-footprint');
+                switch (xhr.status) {
+                    case 200:
+                        if (currentfilename != '' && currentfootprint != '' && (params.filename.value != currentfilename || currentfootprint != xhr.response.footprint)) params.error.classList.remove('d-none');
+                        params.filename.value = xhr.response.filename;
+                        params.filename.setAttribute('data-file-footprint', xhr.response.footprint);
+                        params.filename.classList.remove('d-none');
+                        params.downloadbutton.classList.remove('d-none');
+                        params.deletebutton.classList.remove('d-none');
+                        if (!params.file.classList.contains('d-none')) params.file.classList.add('d-none');
+                        break;
+                    case 204:
+                        if (currentfilename != '') params.error.classList.remove('d-none');
+                        params.filename.value = '';
+                        params.filename.setAttribute('data-file-footprint', '');
+                        if (!params.filename.classList.contains('d-none')) params.filename.classList.add('d-none'); 
+                        if (!params.downloadbutton.classList.contains('d-none')) params.downloadbutton.classList.add('d-none'); 
+                        if (!params.deletebutton.classList.contains('d-none')) params.deletebutton.classList.add('d-none');
+                        params.file.classList.remove('d-none');
+                        break;
+                    default:
+                        params.error.classList.remove('d-none');
                 }
-                else if (xhr.status != 204) { error.classList.remove('d-none'); }
             }
         }
+        if (!params.error.classList.contains('d-none')) params.error.classList.add('d-none');
         xhr.send();
     }
     #saveOrOpenFile(blob, FileName) {
