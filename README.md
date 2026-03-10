@@ -17,6 +17,7 @@ etc
 
 <img width="1041" height="292" alt="Suppliers" src="https://github.com/user-attachments/assets/7531229e-0a4c-4947-9bac-b7189c227182" />
 
-<img width="1041" height="207" alt="Suppliers" src="https://github.com/user-attachments/assets/cb5dfd19-2668-4bc2-92f3-510214c783a5" />
+<img width="1308" height="207" alt="Suppliers" src="https://github.com/user-attachments/assets/f1f11ff0-e074-413b-938a-26eb95b0d8b8" />
+
 
 
