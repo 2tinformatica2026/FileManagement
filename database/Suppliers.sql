@@ -34,7 +34,6 @@ CREATE TABLE [dbo].[SuppliersDocuments](
 	[FileName] [varchar](1000) NOT NULL,
 	[MimeType] [varchar](100) NOT NULL,
 	[Buffer] [image] NOT NULL,
-	[filefootprint] [varchar](44) NOT NULL,
  CONSTRAINT [PK_SuppliersDocuments_1] PRIMARY KEY CLUSTERED 
 (
 	[DocumentType] ASC,
