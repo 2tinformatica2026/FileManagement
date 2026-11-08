@@ -30,22 +30,18 @@ namespace Northwind.Controllers
             using (var db = new Database())
             {
                 // Let's check if the document exists by loading its name and footprint.
-                var document = (from f in db.suppliersDocuments
-                               where f.SupplierID == SupplierID && f.DocumentType == DocumentType
-                               select new FileNameAndFootprint { filename = f.FileName, footprint = f.filefootprint }).FirstOrDefault();
+                var exist = db.suppliersDocuments.Any(c=> upplierID == c.SupplierID && c.DocumentType == DocumentType);
                 // If the document does not exist we insert it. 
-                if (document == null)
+                if (!exist)
                 {
                     byte[] buffer = UploadedFileReader.ToArray(file);
-                    FileNameAndFootprint info = new FileNameAndFootprint(file.FileName, Sha256.Sha256base64string(buffer));
                     SuppliersDocuments doc = new SuppliersDocuments()
                     {
                         SupplierID = SupplierID,
                         DocumentType = DocumentType,
-                        FileName = info.filename,
+                        FileName = file.Filename,
                         MimeType = file.ContentType,
                         Buffer = buffer,
-                        filefootprint = info.footprint,
                     };
                     db.Add(doc);
                     db.SaveChanges();
