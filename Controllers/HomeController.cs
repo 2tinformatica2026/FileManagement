@@ -29,7 +29,7 @@ namespace Northwind.Controllers
             if (file == null) return Ok();
             using (var db = new Database())
             {
-                // Let's check if the document exists by loading its name and footprint.
+                // Let's check if the document exists.
                 var exist = db.suppliersDocuments.Any(c=> upplierID == c.SupplierID && c.DocumentType == DocumentType);
                 // If the document does not exist we insert it. 
                 if (!exist)
@@ -45,8 +45,8 @@ namespace Northwind.Controllers
                     };
                     db.Add(doc);
                     db.SaveChanges();
-                    // We return the file name and its footprint.
-                    return Ok(info);
+                    // We return the Key
+                    return Ok(SuppliersDocumentsKey.JsonKey(SupplierID, DocumentType));
                 }
                 // If the document is already present we return the http code 409 along with the file name and its footprint.
                 else return StatusCode(StatusCodes.Status409Conflict, document);
