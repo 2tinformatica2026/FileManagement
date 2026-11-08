@@ -78,7 +78,7 @@ namespace Northwind.Controllers
             using (var db = new Database())
             {
                 // Let's check if the document exists.
-                if (db.suppliersDocuments.Count(x=>(x.SupplierID==SupplierID && x.DocumentType == DocumentType)) > 0)
+                if (db.suppliersDocuments.Any(x=>(x.SupplierID==SupplierID && x.DocumentType == DocumentType)))
                 {
                     // Let's delete the document.
                     SuppliersDocuments doc = new SuppliersDocuments
@@ -94,22 +94,6 @@ namespace Northwind.Controllers
                 else return StatusCode(StatusCodes.Status204NoContent);
             }
         }
-        [HttpGet]
-        public IActionResult FileNameAndFootprintSupplierDocument(int SupplierID, int DocumentType)
-        {
-            using (var db = new Database())
-            {
-                // Let's get the file name and it's footprint.
-                var result = (from doc in db.suppliersDocuments
-                             where doc.SupplierID == SupplierID && doc.DocumentType == DocumentType
-                             select new FileNameAndFootprint { filename = doc.FileName, footprint = doc.filefootprint }).FirstOrDefault();
-                // If the document doesn't exists let's return the http code 204.
-                if (result == null) return StatusCode(StatusCodes.Status204NoContent);
-                // Let's return the http code 200 and the serialized istance of FileNameAndFootprint. 
-                return Ok(result);             
-            }
-        }
-
         [HttpGet]
         public IActionResult SupplierDocuments(int SupplierID, string CompanyName)
         {
