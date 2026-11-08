@@ -77,18 +77,21 @@
 
 <script type="text/javascript">
     const confirm = new ConfirmBox();
-    const fu = new FileUpload('','','@Model.InsertUrl','@Model.DeleteUrl','@Model.DownloadUrl','@Model.FileNameUrl',true);
-
-    addEventListener('fuBeforeDeleteFile',function(e){
-            e.cancel = true;
-            confirm.Show('delete', e.params,'Are you sure?', 'you are deleting the file "' + e.params.filename.value + '"', 'Yes, do it', 'Cancel',confirm.iconType.information);
-    });
-
-    addEventListener('OnConfirmBox',function(e){
-        switch (e.context){
-            case 'delete':
-               fu.deletefile(e.params);
-            break;
-        }
-    });
+    const fu = new FileUpload();
+    fu.RegisterTheGroup('',
+                        '',
+                        '@Endpoints.SaveTemporaryAttachUrl(configuration)',
+                        '@Endpoints.RemoveTemporaryAttachUrl(configuration)',
+                        '@Endpoints.DownloadTemporaryAttachUrl(configuration)');
+addEventListener('delete.2t.fileupload',function(e){
+    e.cancel = true;
+    confirm.Show('delete', e.params,'Are you sure?', 'you are deleting the file "' + e.params.filenameText + '"', 'Yes, do it', 'Cancel',confirm.iconType.information);
+});
+addEventListener('OnConfirmBox',function(e){
+    switch (e.context){
+        case 'delete':
+           fu.deletefile(e.params);
+        break;
+    }
+});
 </script>
