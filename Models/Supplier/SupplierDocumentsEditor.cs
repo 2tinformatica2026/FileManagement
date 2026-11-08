@@ -9,7 +9,6 @@
         public string InsertUrl { get; } = "/home/AddSupplierDocument";
         public string DownloadUrl { get; } = "/home/DownloadSupplierDocument";
         public string DeleteUrl { get; } = "/home/DeleteSupplierDocument";
-        public string FileNameUrl { get; } = "/home/FileNameAndFootprintSupplierDocument";
         public string JsonKey(SuppliersDocumentsKey.documentType docType)
         {
             return SuppliersDocumentsKey.JsonKey(SupplierID, docType);
