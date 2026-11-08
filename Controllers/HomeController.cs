@@ -65,10 +65,9 @@ namespace Northwind.Controllers
                                  Buffer = doc.Buffer,
                                  FileName = doc.FileName,
                                  MimeType = doc.MimeType,
-                                 Footprint = doc.filefootprint,
                              } ).FirstOrDefault();
                // If the document exists we return the http 200 code along with its FileContent instance. 
-               if (result!=null) return new ExtendedFileContentResult(HttpContext, result);
+               if (result!=null) return File(FileContent.Buffer, FileContent.MimeType, FileContent.FileName);;
                // If the document does not exist we return the 204 http code.
                return StatusCode(StatusCodes.Status204NoContent);
             }
