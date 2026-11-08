@@ -17,8 +17,5 @@ namespace [Application Name].NorthwindDb
         public string MimeType { get; set; } = string.Empty;
         [Column("Buffer")]
         public byte[] Buffer { get; set; } = Array.Empty<byte>();
-        [Column("filefootprint")]
-        public string filefootprint { get; set; } = string.Empty;
-
     }
 }
