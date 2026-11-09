@@ -1,4 +1,4 @@
-# Complete infrastructure for file upload and download management
+# Complete infrastructure for file upload and download
 
 ## 1  Introduction
 
@@ -29,6 +29,16 @@ Upload panel
 <br>
 <br>
 <img width="457" height="268" alt="image 04" src="https://github.com/user-attachments/assets/65710487-df31-40b9-8b85-bd9f4ce31156" />
+<br>
+<br>
+Operation requires the implementation of three services:
+
+- Saving the file with the post method;
+- Delete the file with delete method;
+- Download the file with get method.
+
+The basic tabular structure is as follows:
+
 <br>
 <br>
 
