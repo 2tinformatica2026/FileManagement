@@ -120,9 +120,12 @@ The operating logic arises from observing the use cases of this type of control 
     </td>
   </tr>
 </table>
-<br>
+
 The user is invited to enter 4 types of documents
 <br>
+<br>
+
+
 <span><strong>Message Attachments</strong></span>
 <br>
 <table>
@@ -133,6 +136,11 @@ The user is invited to enter 4 types of documents
 </table>
 <br>
 The user can enter any number of documents he wants
+<br>
+<br>
+Now for each of the three cases we assume a minimal tabular structure.
+<br>
+<br>
 
 
 
