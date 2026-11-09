@@ -77,5 +77,52 @@ The basic tabular structure is as follows:
   </tr>
 </table>
 <br>
+PK 1…n represent the primary key.
+<br>
+
+## 2.1	Operating logic
+
+The operating logic arises from observing the use cases of this type of control within user interfaces. Below are three of the most common cases:
+
+<span><strong>Documentation for admission tests</strong></span> 
+<br>
+<table>
+  <tr>
+    <td>
+      Identity card
+    </td>
+    <td>
+      <img width="535" height="48" alt="image 05" src="https://github.com/user-attachments/assets/3c5f25b2-5dd8-4648-a193-2d36ac94ace6" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fiscal code
+    </td>
+    <td>
+      <img width="535" height="48" alt="image 05" src="https://github.com/user-attachments/assets/3c5f25b2-5dd8-4648-a193-2d36ac94ace6" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      CV
+    </td>
+    <td>
+      <img width="535" height="48" alt="image 05" src="https://github.com/user-attachments/assets/3c5f25b2-5dd8-4648-a193-2d36ac94ace6" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Photo
+    </td>
+    <td>
+      <img width="535" height="48" alt="image 05" src="https://github.com/user-attachments/assets/3c5f25b2-5dd8-4648-a193-2d36ac94ace6" />
+    </td>
+  </tr>
+</table>
+ 
+
+
+
 
 
