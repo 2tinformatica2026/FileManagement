@@ -38,8 +38,6 @@ Operation requires the implementation of three services:
 - Download the file with get method.
 
 The basic tabular structure is as follows:
-
-<br>
 <br>
 <table>
   <tr>
@@ -62,6 +60,22 @@ The basic tabular structure is as follows:
     <td>some type</td>
     <td>description</td>
   </tr>
+  <tr>
+    <td>File_Buffer</td>
+    <td>Image / Varbinary(max)</td>
+    <td>The file</td>
+  </tr>
+  <tr>
+    <td>File_Name</td>
+    <td>Varchar(100)</td>
+    <td>Filename with extension</td>
+  </tr>
+  <tr>
+    <td>Mime_Type</td>
+    <td>Varchar(100)</td>
+    <td>Returned Javascript Mime Type</td>
+  </tr>
 </table>
+<br>
 
 
