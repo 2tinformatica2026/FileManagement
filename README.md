@@ -41,6 +41,27 @@ The basic tabular structure is as follows:
 
 <br>
 <br>
-
+<table>
+  <tr>
+    <th>column</th>
+    <th>type</th>
+    <th>description</th>
+  </tr>
+  <tr>
+    <td>PK_1</td>
+    <td>some type</td>
+    <td>description</td>
+  </tr>
+  <tr>
+    <td>PK_2</td>
+    <td>some type</td>
+    <td>description</td>
+  </tr>
+  <tr>
+    <td>PK_n</td>
+    <td>some type</td>
+    <td>description</td>
+  </tr>
+</table>
 
 
