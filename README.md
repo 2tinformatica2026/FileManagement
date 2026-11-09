@@ -138,6 +138,13 @@ The user is invited to enter 4 types of documents
 The user can enter any number of documents he wants
 <br>
 <br>
+<span><strong>Contract annexes</strong></span>
+<br>
+<img width="593" height="144" alt="image 06" src="https://github.com/user-attachments/assets/12948d31-bdab-4340-8dbb-0c6af1cb609c" />
+<br>
+The user can enter any number of documents indicating their type.
+<br>
+<br>
 Now for each of the three cases we assume a minimal tabular structure.
 <br>
 <br>
