@@ -120,7 +120,22 @@ The operating logic arises from observing the use cases of this type of control 
     </td>
   </tr>
 </table>
- 
+<br>
+The user is invited to enter 4 types of documents
+<br>
+<span><strong>Message Attachments</strong></span>
+<br>
+<table>
+  <tr>
+    <td>Attachment</td>
+    <td><img width="535" height="48" alt="image 05" src="https://github.com/user-attachments/assets/3c5f25b2-5dd8-4648-a193-2d36ac94ace6" /></td>
+  </tr>
+</table>
+<br>
+The user can enter any number of documents he wants
+
+
+
 
 
 
