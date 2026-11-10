@@ -282,7 +282,39 @@ data-partial-url-params = '{"Message_Id":1025}' or data-partial-url-params = "Me
 
 data-url-params = '{"Message_Id":1025,"File_Id":12}' or data-url-params = "Message_Id=1025&File_Id=12" </br></br>
 
+Below is a minimal example of the three required web services.</br><br>
+
+```csharp
+
+[Authorize]
+[HttpPost]
+[Route("mycontroller/SaveTemporaryDocument")]
+public ActionResult SaveTemporaryDocument(IFormFile file, int User_Id, int Doc_Type)
+{
+  var number = (db.User_Documents.Where(x=> x.User_Id == User_Id).Select(x=>(int?)x.Doc_Number).Max()?? 0)+1;
+  //add new record here
+  return Ok(“User_Id=” + User_Id.ToString() + “&Doc_Type =” + Doc_Type.ToString()  +  “&Doc_Number=” + number.ToString());
+}
+//
+[Authorize]
+[HttpGet]
+[Route("mycontroller/DownloadTemporaryDocument")]
+public ActionResult DownloadTemporaryDocument(int User_Id, int Doc_Type, int Doc_Number)
+{
+	//retrive the document here
+	return File(……);
+}
+//
+[Authorize]
+[HttpDelete]
+[Route("mycontroller/DeleteTemporaryDocument")]
+public ActionResult DeleteTemporaryDocument(int User_Id, int Doc_Type, int Doc_Number)
+{
+	//delete the document here
+	return Ok();
+}
 
 
 
+```
 
