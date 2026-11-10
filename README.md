@@ -272,11 +272,11 @@ Therefore, the partial key is required to insert a new file, while the complete 
 
 Both, in the html implementation of the control, are represented by the values of the following properties, respectively:
 
-data-partial-url-params and data-url-params.
+<strong>[data-partial-url-params]</strong> and <strong>[data-url-params]</strong>.
 
-data-partial-url-params must be valued either during the loading phase of the web page or subsequently, via JavaScript, when its value comes from a previous action (see the case of contract attachments).
+<strong>data-partial-url-params</strong> must be valued either during the loading phase of the web page or subsequently, via JavaScript, when its value comes from a previous action (see the case of contract attachments).
 
-data-url-params must instead be valued by the web service's response to the insertion of the new record. Both Json and url params formats are allowed.
+<strong>data-url-params must</strong> instead be valued by the web service's response to the insertion of the new record. Both Json and url params formats are allowed.
 
 
 
