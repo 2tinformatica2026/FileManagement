@@ -148,6 +148,42 @@ The user can enter any number of documents indicating their type.
 Now for each of the three cases we assume a minimal tabular structure.
 <br>
 <br>
+<span><strong>Documentation for admission tests</strong></span> 
+<br>
+<br>
+<div><strong>Competitor_Documents</strong></div>
+<table>
+  <tr>
+    <td>Pk</td>
+    <td>Test_Id</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td>Pk</td>
+    <td>Competitor_Id</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td>Pk</td>
+    <td>Doc_Type</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>File_Buffer</td>
+    <td>Image / Varbinary(max), not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>File_Name</td>
+    <td>Varchar(100), not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Mime_Type</td>
+    <td>Varchar(100), not null</td>
+  </tr>
+</table>
 
 
 
