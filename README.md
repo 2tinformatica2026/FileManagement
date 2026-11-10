@@ -316,7 +316,12 @@ public ActionResult SaveTemporaryDocument(IFormFile file, int User_Id, int Doc_T
   //add new record here
   return Ok(“User_Id=” + User_Id.ToString() + “&Doc_Type =” + Doc_Type.ToString()  +  “&Doc_Number=” + number.ToString());
 }
-
-
 ```
+## 2.2	http status codes managed by the Javascript FileUpload class
+
+The Javascript FileUpload class handles the following http status codes:</br>
+
+
+
+
 
