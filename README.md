@@ -339,6 +339,12 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td>Process successfully terminated</td>
 		<td align="center">200</td>
 	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>unauthorized user <img width="20" height="20" alt="image 07" src="https://github.com/user-attachments/assets/5860cf44-2532-4adb-8eec-f1d16eb6193d" /></td>
+		<td align="center">401</td>
+	</tr>
 </table>
 
 
