@@ -371,6 +371,20 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td valign="middle">Process terminated successfully but record no longer exists. The control will be configured in Upload mode by reporting the anomaly graphically <img width="20" height="20" alt="image 08" src="https://github.com/user-attachments/assets/d79ed232-f1e6-4671-a424-9c18d8b76ac9" /></td>
 		<td align="center">204</td>
 	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">unauthorized user <img width="20" height="20" alt="image 07" src="https://github.com/user-attachments/assets/5860cf44-2532-4adb-8eec-f1d16eb6193d" /></td>
+		<td align="center">401</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">
+			Failed process <img width="20" height="20" alt="image 09" src="https://github.com/user-attachments/assets/2451459d-301b-47bd-b04a-b91529e50ccb" />
+		</td>
+		<td align="center">All other status codes</td>
+	</tr>
 
 </table>
 
