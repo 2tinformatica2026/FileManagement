@@ -276,10 +276,11 @@ Both, in the html implementation of the control, are represented by the values o
 
 <strong>data-partial-url-params</strong> must be valued either during the loading phase of the web page or subsequently, via JavaScript, when its value comes from a previous action (see the case of contract attachments).
 
-<strong>data-url-params must</strong> instead be valued by the web service's response to the insertion of the new record. Both Json and url params formats are allowed.
+<strong>data-url-params must</strong> instead be valued by the web service's response to the insertion of the new record. Both Json and url params formats are allowed:</br></br>
 
+data-partial-url-params = '{"Message_Id":1025}' or data-partial-url-params = "Message_Id=1025" </br></br>
 
-
+data-url-params = '{"Message_Id":1025,"File_Id":12}' or data-url-params = "Message_Id=1025&File_Id=12" </br></br>
 
 
 
