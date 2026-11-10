@@ -385,6 +385,19 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		</td>
 		<td align="center">All other status codes</td>
 	</tr>
+	</tr>
+		<tr>
+		<td align="center">Delete</td>
+		<td align="center">Delete</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>Process terminated successfully. The control will configure itself in Upload mode</td>
+		<td align="center">200, 204</td>
+	</tr>
 
 </table>
 
