@@ -84,7 +84,7 @@ PK 1…n represent the primary key.
 
 The operating logic arises from observing the use cases of this type of control within user interfaces. Below are three of the most common cases:
 
-<span><strong>Documentation for admission tests</strong></span> 
+<ins><strong>Documentation for admission tests</strong></ins> 
 <br>
 <table>
   <tr>
@@ -126,7 +126,7 @@ The user is invited to enter 4 types of documents
 <br>
 
 
-<span><strong>Message Attachments</strong></span>
+<ins><strong>Message Attachments</strong></ins>
 <br>
 <table>
   <tr>
@@ -138,7 +138,7 @@ The user is invited to enter 4 types of documents
 The user can enter any number of documents he wants
 <br>
 <br>
-<span><strong>Contract annexes</strong></span>
+<ins><strong>Contract annexes</strong></ins>
 <br>
 <img width="593" height="144" alt="image 06" src="https://github.com/user-attachments/assets/12948d31-bdab-4340-8dbb-0c6af1cb609c" />
 <br>
