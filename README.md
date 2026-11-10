@@ -345,6 +345,14 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td>unauthorized user <img width="20" height="20" alt="image 07" src="https://github.com/user-attachments/assets/5860cf44-2532-4adb-8eec-f1d16eb6193d" /></td>
 		<td align="center">401</td>
 	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>
+			Failed process <img width="20" height="20" alt="image 09" src="https://github.com/user-attachments/assets/2451459d-301b-47bd-b04a-b91529e50ccb" />
+		</td>
+		<td align="center">All other status codes</td>
+	</tr>
 </table>
 
 
