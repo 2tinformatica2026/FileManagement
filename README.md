@@ -365,8 +365,15 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td>Process successfully terminated</td>
 		<td align="center">200</td>
 	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">Process terminated successfully but record no longer exists. The control will be configured in Upload mode by reporting the anomaly graphically <img width="20" height="20" alt="image 08" src="https://github.com/user-attachments/assets/d79ed232-f1e6-4671-a424-9c18d8b76ac9" /></td>
+		<td align="center">204</td>
+	</tr>
 
 </table>
+
 
 
 
