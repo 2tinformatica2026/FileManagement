@@ -415,6 +415,7 @@ The Javascript FileUpload class handles the following http status codes:</br>
 </table>
 </br>
 </br>
+
 ## 2.3	Html Structure
 
 ```html
