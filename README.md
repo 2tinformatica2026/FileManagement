@@ -264,8 +264,8 @@ After inserting the new record we will instead have:
 <br/>
 <br/>
 1.	Admission Test Documentation	=> full key<br/>
-2.	Message Attachments    		    => Message_Id, File_Id<br/>
-3.	Contract Attachments		      => Contract_Id, Customer_Id, Doc_Type, File_Id<br/>
+2.	Message Attachments    		    => Message_Id, <strong>File_Id</strong><br/>
+3.	Contract Attachments		      => Contract_Id, Customer_Id, Doc_Type, <strong>File_Id</strong><br/>
 
 <br/>
 Therefore, the partial key is required to insert a new file, while the complete key will allow it to be downloaded and deleted.
