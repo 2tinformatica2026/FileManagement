@@ -320,7 +320,14 @@ public ActionResult SaveTemporaryDocument(IFormFile file, int User_Id, int Doc_T
 ## 2.2	http status codes managed by the Javascript FileUpload class
 
 The Javascript FileUpload class handles the following http status codes:</br>
-
+<table>
+	<tr>
+		<th><strong>Service</strong></th>
+		<th><strong>HTTP Method</strong></th>
+		<th><strong>Triggering event</strong></th>
+		<th><strong>HTTP status code</strong></th>
+	</tr>
+</table>
 
 
 
