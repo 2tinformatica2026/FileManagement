@@ -148,9 +148,6 @@ The user can enter any number of documents indicating their type.
 Now for each of the three cases we assume a minimal tabular structure.
 <br>
 <br>
-<strong><ins>Documentation for admission tests</ins></strong> 
-<br>
-<br>
 <strong>Competitor_Documents</strong>
 <table>
   <tr>
@@ -185,8 +182,39 @@ Now for each of the three cases we assume a minimal tabular structure.
   </tr>
 </table>
 
-
-
+<br>
+<br>
+<strong>Message Attachments</strong>
+<table>
+  <tr>
+    <td>Pk</td>
+    <td>Message_Id</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td>Pk</td>
+    <td>File_Id</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>File_Buffer</td>
+    <td>Image / Varbinary(max), not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>File_Name</td>
+    <td>Varchar(100), not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Mime_Type</td>
+    <td>Varchar(100), not null</td>
+  </tr>
+</table>
+<br>
+<br>
+<ins><strong>Contract annexes</strong></ins>
 
 
 
