@@ -353,6 +353,19 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		</td>
 		<td align="center">All other status codes</td>
 	</tr>
+		<tr>
+		<td align="center">Download</td>
+		<td align="center">Get</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>Process successfully terminated</td>
+		<td align="center">200</td>
+	</tr>
+
 </table>
 
 
