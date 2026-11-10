@@ -324,8 +324,20 @@ The Javascript FileUpload class handles the following http status codes:</br>
 	<tr>
 		<th><strong>Service</strong></th>
 		<th><strong>HTTP Method</strong></th>
-		<th><strong>Triggering event</strong></th>
+		<th><strong>Triggering process</strong></th>
 		<th><strong>HTTP status code</strong></th>
+	</tr>
+	<tr>
+		<td align="center">Upload</td>
+		<td align="center">Post</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>Process successfully terminated</td>
+		<td align="center">200</td>
 	</tr>
 </table>
 
