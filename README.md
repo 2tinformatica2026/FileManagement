@@ -18,19 +18,19 @@ The Javascript FileUpload class implements full handling of selecting, saving, d
 The user interface displays the upload progression, with the ability to stop, delete, and download the uploaded file:
 
 Upload panel
-<br>
+</br>
 <img width="482" height="283" alt="image 01" src="https://github.com/user-attachments/assets/4edfd7ae-54eb-41f3-97b4-374008a24822" />
-<br>
-<br>
+</br>
+</br>
 <img width="472" height="277" alt="image 02" src="https://github.com/user-attachments/assets/a5490eeb-d8ba-4d0b-868d-8e875661e269" />
-<br>
-<br>
+</br>
+</br>
 <img width="461" height="270" alt="image 03" src="https://github.com/user-attachments/assets/e862b96f-724b-429b-9029-8935cd0e7024" />
-<br>
-<br>
+</br>
+</br>
 <img width="457" height="268" alt="image 04" src="https://github.com/user-attachments/assets/65710487-df31-40b9-8b85-bd9f4ce31156" />
-<br>
-<br>
+</br>
+</br>
 Operation requires the implementation of three services:
 
 - Saving the file with the post method;
@@ -38,7 +38,7 @@ Operation requires the implementation of three services:
 - Download the file with get method.
 
 The basic tabular structure is as follows:
-<br>
+</br>
 <table>
   <tr>
     <th>column</th>
@@ -76,16 +76,16 @@ The basic tabular structure is as follows:
     <td>Returned Javascript Mime Type</td>
   </tr>
 </table>
-<br>
+</br>
 PK 1…n represent the primary key.
-<br>
+</br>
 
 ## 2.1	Operating logic
 
 The operating logic arises from observing the use cases of this type of control within user interfaces. Below are three of the most common cases:
 
 <ins><strong>Documentation for admission tests</strong></ins> 
-<br>
+</br>
 <table>
   <tr>
     <td>
@@ -122,32 +122,32 @@ The operating logic arises from observing the use cases of this type of control 
 </table>
 
 The user is invited to enter 4 types of documents
-<br>
-<br>
+</br>
+</br>
 
 
 <ins><strong>Message Attachments</strong></ins>
-<br>
+</br>
 <table>
   <tr>
     <td>Attachment</td>
     <td><img width="535" height="48" alt="image 05" src="https://github.com/user-attachments/assets/3c5f25b2-5dd8-4648-a193-2d36ac94ace6" /></td>
   </tr>
 </table>
-<br>
+</br>
 The user can enter any number of documents he wants
-<br>
-<br>
+</br>
+</br>
 <ins><strong>Contract annexes</strong></ins>
-<br>
+</br>
 <img width="593" height="144" alt="image 06" src="https://github.com/user-attachments/assets/12948d31-bdab-4340-8dbb-0c6af1cb609c" />
-<br>
+</br>
 The user can enter any number of documents indicating their type.
-<br>
-<br>
+</br>
+</br>
 Now for each of the three cases we assume a minimal tabular structure.
-<br>
-<br>
+</br>
+</br>
 <strong>Competitor_Documents</strong>
 <table>
   <tr>
@@ -182,8 +182,8 @@ Now for each of the three cases we assume a minimal tabular structure.
   </tr>
 </table>
 
-<br>
-<br>
+</br>
+</br>
 <strong>Message Attachments</strong>
 <table>
   <tr>
@@ -212,8 +212,8 @@ Now for each of the three cases we assume a minimal tabular structure.
     <td>Varchar(100), not null</td>
   </tr>
 </table>
-<br>
-<br>
+</br>
+</br>
 <strong>Contract_Annexes</strong>
 <table>
   <tr>
@@ -252,14 +252,32 @@ Now for each of the three cases we assume a minimal tabular structure.
     <td>Varchar(100), not null</td>
   </tr>
 </table>
-<br>
+</br>
 
 Note how before inserting a new record a part of the primary key is already known:
-<br>
-
+</br>
 1.	Admission Test Documentation	=> full key
 2.	Message Attachments    		    => Message_Id
 3.	Contract Attachments		      => Contract_Id, Customer_Id, Doc_Type
+<br/>
+After inserting the new record we will instead have:
+<br/>
+<br/>
+1.	Admission Test Documentation	=> full key<br/>
+2.	Message Attachments    		    => Message_Id, File_Id<br/>
+3.	Contract Attachments		      => Contract_Id, Customer_Id, Doc_Type, File_Id<br/>
+
+<br/>
+Therefore, the partial key is required to insert a new file, while the complete key will allow it to be downloaded and deleted.
+
+Both, in the html implementation of the control, are represented by the values of the following properties, respectively:
+
+data-partial-url-params and data-url-params.
+
+data-partial-url-params must be valued either during the loading phase of the web page or subsequently, via JavaScript, when its value comes from a previous action (see the case of contract attachments).
+
+data-url-params must instead be valued by the web service's response to the insertion of the new record. Both Json and url params formats are allowed.
+
 
 
 
