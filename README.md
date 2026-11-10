@@ -148,10 +148,10 @@ The user can enter any number of documents indicating their type.
 Now for each of the three cases we assume a minimal tabular structure.
 <br>
 <br>
-<span><strong>Documentation for admission tests</strong></span> 
+<strong><ins>Documentation for admission tests</ins></strong> 
 <br>
 <br>
-<div><strong>Competitor_Documents</strong></div>
+<strong>Competitor_Documents</strong>
 <table>
   <tr>
     <td>Pk</td>
