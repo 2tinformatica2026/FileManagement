@@ -214,7 +214,45 @@ Now for each of the three cases we assume a minimal tabular structure.
 </table>
 <br>
 <br>
-<ins><strong>Contract annexes</strong></ins>
+<strong>Contract_Annexes</strong>
+<table>
+  <tr>
+    <td>Pk</td>
+    <td>Contract_Id</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td>Pk</td>
+    <td>Customer_Id</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td>Pk</td>
+    <td>Doc_Type</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td>Pk</td>
+    <td>File_Id</td>
+    <td>Int, not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>File_Buffer</td>
+    <td>Image / Varbinary(max), not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>File_Name</td>
+    <td>Varchar(100), not null</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Mime_Type</td>
+    <td>Varchar(100), not null</td>
+  </tr>
+</table>
+
 
 
 
