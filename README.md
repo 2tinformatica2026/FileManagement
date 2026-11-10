@@ -253,8 +253,9 @@ Now for each of the three cases we assume a minimal tabular structure.
   </tr>
 </table>
 <br>
-<br>
+
 Note how before inserting a new record a part of the primary key is already known:
+<br>
 
 1.	Admission Test Documentation	=> full key
 2.	Message Attachments    		    => Message_Id
