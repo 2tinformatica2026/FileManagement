@@ -252,6 +252,14 @@ Now for each of the three cases we assume a minimal tabular structure.
     <td>Varchar(100), not null</td>
   </tr>
 </table>
+<br>
+<br>
+Note how before inserting a new record a part of the primary key is already known:
+
+1.	Admission Test Documentation	=> full key
+2.	Message Attachments    		    => Message_Id
+3.	Contract Attachments		      => Contract_Id, Customer_Id, Doc_Type
+
 
 
 
