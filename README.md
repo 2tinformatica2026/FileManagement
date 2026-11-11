@@ -499,14 +499,14 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td align="center" valign="middle" align="justify">This is the button to cancel the upload and download process</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="download"</td>
+		<td align="center" valign="middle" align="justify">It's the button to start the download</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="delete"</td>
+		<td align="center" valign="middle" align="justify">It's the button to delete the file</td>
 	</tr>
 </table>
 
