@@ -513,7 +513,9 @@ The Javascript FileUpload class handles the following http status codes:</br>
 </br>
 ## 2.4	Javascript FileUpload
 </br>
+
 ```javascript
+
 class FileUpload {
     RegisterTheGroup(Token, Group, InsertUrl, DeleteUrl, DownloadUrl) {
         const containers = document.querySelectorAll('div[data-component="file-upload"][data-group="' + Group + '"]');
