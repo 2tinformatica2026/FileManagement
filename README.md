@@ -441,7 +441,21 @@ The Javascript FileUpload class handles the following http status codes:</br>
 </div>
 
 ```
+<strong><ins>Elements description</ins></strong></br><*br>
+<table>
+	<tr>
+		<th align="center"><strong>html element</strong></th>
+		<th align="center"><strong>attribute name</strong></th>
+		<th align="center"><strong>purpose</strong></th>
+	</tr>
+	
+</table>
 
-<strong><ins>Elements description</ins></strong>
+
+
+
+
+
+
 
 
