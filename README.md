@@ -465,8 +465,8 @@ The Javascript FileUpload class handles the following http status codes:</br>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle">data-url-params</td>
+		<td align="center" valign="middle" align="justify">It is the complete key of the inserted record that must be returned by the previous web service either in json format or in url params format</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
