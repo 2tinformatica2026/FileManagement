@@ -886,5 +886,13 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 		<td align="center" valign="middle" align="justify">#BaseParameters(group, token, ServiceUrl, container)</td>
 		<td align="center" valign="middle" align="justify">Returns an object with the Group, Token, Url attributes of the context-related web service, the container, and the file name with the extension.</td>
 	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify">#CompleteParameters(baseParameters)</td>
+		<td align="center" valign="middle" align="justify">Returns an object with all the attributes and elements of the control.</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify">#CompleteParameters(baseParameters)</td>
+		<td align="center" valign="middle" align="justify">Returns an object with all the attributes and elements of the control.</td>
+	</tr>
 </table>
 
