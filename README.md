@@ -882,5 +882,9 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 		<td align="center" valign="middle" align="justify">RegisterTheGroup(Token, Group, InsertUrl, DeleteUrl, DownloadUrl)</td>
 		<td align="center" valign="middle" align="justify">E’ the method that must be called to initialize the control or controls. Token represents a string of type BearerToken. If existing it will be added in the request header. Group identifies the group of controls with which the same three web services will be associated.</td>
 	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify">#BaseParameters(group, token, ServiceUrl, container)</td>
+		<td align="center" valign="middle" align="justify">Returns an object with the Group, Token, Url attributes of the context-related web service, the container, and the file name with the extension.</td>
+	</tr>
 </table>
 
