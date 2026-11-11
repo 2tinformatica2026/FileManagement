@@ -917,6 +917,9 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 
 ## 2.5	Example of use
 </br>
+<strong><ins>ER diagram</ins></strong></br></br>
+<img width="801" height="201" alt="image 10" src="https://github.com/user-attachments/assets/f8cfc666-179c-4a94-b1f6-bf0f09657c1b" />
+</br>
 
 ```html
 
@@ -975,10 +978,4 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 </div>
 
 ```
-</br>
-</br>
-<strong><ins>ER diagram</ins></strong></br></br>
-
-<img width="801" height="201" alt="image 10" src="https://github.com/user-attachments/assets/f8cfc666-179c-4a94-b1f6-bf0f09657c1b" />
-
 
