@@ -867,7 +867,7 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 </br>
 <table>
 	<tr>
-		<th align="center" valign="middle" align="justify"><strong>Method</strong></th>
+		<th width="500" align="center" valign="middle" align="justify"><strong>Method</strong></th>
 		<th align="center" valign="middle" align="justify"><strong>Description</strong></th>
 	</tr>
 	<tr>
