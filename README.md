@@ -865,5 +865,14 @@ class FileUpload {
 The class implements 7 private methods (preceded by the # character) and 3 public methods:
 </br>
 </br>
-
+<table>
+	<tr>
+		<th align="center" valign="middle" align="justify"><strong>Method</strong></th>
+		<th align="center" valign="middle" align="justify"><strong>Description</strong></th>
+	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify">#KeyToURLSearchParams(key)</td>
+		<td align="center" valign="middle" align="justify">Called internally to convert a key from a Json format to a Params URL format. If an error occurs, it returns a null value. </td>
+	</tr>
+</table>
 
