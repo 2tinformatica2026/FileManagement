@@ -451,47 +451,47 @@ The Javascript FileUpload class handles the following http status codes:</br>
 	<tr>
 		<td align="center" valign="middle">div</td>
 		<td align="center" valign="middle">data-component="file-upload"</td>
-		<td align="center" valign="middle">This is the container control. The Javascript FileUpload class will select all elements with these characteristics within the DOM</td>
+		<td align="center" valign="middle" align="justify">This is the container control. The Javascript FileUpload class will select all elements with these characteristics within the DOM</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle">data-group</td>
+		<td align="center" valign="middle" align="justify">It is intended to group one or more containers during the call to the RegisterTheGroup(Token, Group, InsertUrl, DeleteUrl, DownloadUrl) method of the Javascript FileUpload class</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
 	</tr>
 </table>
 
