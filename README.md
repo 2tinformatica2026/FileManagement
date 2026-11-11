@@ -896,19 +896,19 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 	</tr>
 	<tr>
 		<td align="center" valign="middle" align="justify">#download(BaseParameters)</td>
-		<td align="center" valign="middle" align="justify">Retrieve the file via the indicated web service and the complete key and save or open it in the browser</td>
+		<td align="center" valign="middle" align="justify">Retrieve the file via the indicated web service and the complete key and save or open it in the user's browser</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle" align="justify">delete(BaseParameters)</td>
 		<td align="center" valign="middle" align="justify">It allows you to delete the file using the indicated web service and the complete key</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle" align="justify"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle" align="justify">#saveOrOpenFile(blob, FileName)</td>
+		<td align="center" valign="middle" align="justify">Save or open the file in the user's Browser </td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle" align="justify"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle" align="justify">#GetFileNameFromHeader(header)</td>
+		<td align="center" valign="middle" align="justify">Extracts the file name with extension from the header of the response received from the download web service</td>
 	</tr>
 </table>
 
