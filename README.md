@@ -460,38 +460,38 @@ The Javascript FileUpload class handles the following http status codes:</br>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle">data-partial-url-params</td>
+		<td align="center" valign="middle" align="justify">It is the partial key required by the web service "InsertUrl" named in the call of the previous method "RegisterTheGroup"</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle" align="justify"></td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle" align="justify"></td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle" align="justify"></td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle" align="justify"></td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle" align="justify"></td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle" align="justify"></td>
 	</tr>
 </table>
 
