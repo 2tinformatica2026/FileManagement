@@ -440,10 +440,8 @@ The Javascript FileUpload class handles the following http status codes:</br>
 	</div>
 </div>
 
-
-
 ```
 
-
+<strong><ins>Elements description</ins></strong>
 
 
