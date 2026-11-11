@@ -445,13 +445,13 @@ The Javascript FileUpload class handles the following http status codes:</br>
 <table>
 	<tr>
 		<th align="center"><strong>html element</strong></th>
-		<th align="center"><strong>attribute name</strong></th>
+		<th align="center"><strong>attribute name and value</strong></th>
 		<th align="center"><strong>purpose</strong></th>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
-		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle">div</td>
+		<td align="center" valign="middle">data-component="file-upload"</td>
+		<td align="center" valign="middle"></td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"><strong></strong></td>
