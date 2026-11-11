@@ -872,7 +872,11 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 	</tr>
 	<tr>
 		<td align="center" valign="middle" align="justify">#KeyToURLSearchParams(key)</td>
-		<td align="center" valign="middle" align="justify">Called internally to convert a key from a Json format to a Params URL format. If an error occurs, it returns a null value. </td>
+		<td align="center" valign="middle" align="justify">Called internally to convert a key from a Json format to a Params URL format. If an error occurs, it returns a null value.</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify">Reset(containerId)</td>
+		<td align="center" valign="middle" align="justify">Forces control in the input state by deleting any value of the container's data-url-returned-params attribute.</td>
 	</tr>
 </table>
 
