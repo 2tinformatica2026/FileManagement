@@ -945,7 +945,7 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 		<label>Identity card</label>
 		<div class="input-group"
 			 data-component="file-upload"
-			 data-group="Health card"
+			 data-group="UserDocuments"
 			 data-partial-url-params='{"User_Id":1005,"Doc_Type":2}'
 			 data-url-params="">
 			<input type="file" class="form-control" required /> <!-- adding required attribute if the document is considered mandatory -->
@@ -962,7 +962,7 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 		<label>Identity card</label>
 		<div class="input-group"
 			 data-component="file-upload"
-			 data-group="Proof of residence"
+			 data-group="UserDocuments"
 			 data-partial-url-params='{"User_Id":1005,"Doc_Type":3}'
 			 data-url-params="">
 			<input type="file" class="form-control" required /> <!-- adding required attribute if the document is considered mandatory -->
@@ -976,6 +976,13 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 		</div>
 	</div>
 </div>
-
+<script>
+	const fu = new FileUpload();
+	fu.RegisterTheGroup('',
+	                    'UserDocuments',
+	                    '/SaveTemporaryAttach',
+	                    '/RemoveTemporaryAttach',
+	                    '/DownloadTemporaryAttach');
+</script>
 ```
 
