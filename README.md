@@ -479,8 +479,8 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td align="center" valign="middle" align="justify">This element is entrusted with the task of indicating the existence of the file by showing its name and extension. When registering the control via FileUpload's RegisterTheGroup method, the presence of the file name will place the control state in download and delete modes with the display of the relevant buttons</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="error"</td>
 		<td align="center" valign="middle" align="justify"></td>
 	</tr>
 	<tr>
