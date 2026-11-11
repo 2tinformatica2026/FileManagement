@@ -895,12 +895,12 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 		<td align="center" valign="middle" align="justify">Upload the file via a FormData instance and transfer it to the dedicated web service along with any partial key in url params format.</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle" align="justify"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle" align="justify">#download(BaseParameters)</td>
+		<td align="center" valign="middle" align="justify">Retrieve the file via the indicated web service and the complete key and save or open it in the browser</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle" align="justify"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle" align="justify">delete(BaseParameters)</td>
+		<td align="center" valign="middle" align="justify">It allows you to delete the file using the indicated web service and the complete key</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle" align="justify"></td>
