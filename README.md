@@ -894,5 +894,21 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 		<td align="center" valign="middle" align="justify">#upload(BaseParameters)</td>
 		<td align="center" valign="middle" align="justify">Upload the file via a FormData instance and transfer it to the dedicated web service along with any partial key in url params format.</td>
 	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle" align="justify"></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle" align="justify"></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle" align="justify"></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle" align="justify"></td>
+	</tr>
 </table>
 
