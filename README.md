@@ -428,7 +428,7 @@ The Javascript FileUpload class handles the following http status codes:</br>
 			 data-group="Contract_Annexes"
 			 data-partial-url-params='{"Contract_Id":1005,"Customer_Id":"1000","Doc_Type":1}'
 			 data-url-params="">
-			<input type="file" class="form-control" required- />
+			<input type="file" class="form-control" required /> <!-- adding required attribute if the document is considered mandatory -->
 			<span class="form-control rounded-3 d-none" data-file-name></span>
 			<span class="bi ms-2 mt-auto mb-auto p-0 text-danger d-none" data-role="error"></span>
 			<span class="mt-auto mb-auto ms-2 d-none" data-role="progress-bar"></span>
@@ -441,14 +441,58 @@ The Javascript FileUpload class handles the following http status codes:</br>
 </div>
 
 ```
-<strong><ins>Elements description</ins></strong></br><*br>
+<strong><ins>Elements description</ins></strong></br></br>
 <table>
 	<tr>
 		<th align="center"><strong>html element</strong></th>
 		<th align="center"><strong>attribute name</strong></th>
 		<th align="center"><strong>purpose</strong></th>
 	</tr>
-	
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+		<td align="center" valign="middle"><strong></strong></td>
+	</tr>
 </table>
 
 
