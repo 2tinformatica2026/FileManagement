@@ -469,9 +469,9 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td align="center" valign="middle" align="justify">It is the complete key of the inserted record that must be returned by the previous web service either in json format or in url params format</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle">input</td>
+		<td align="center" valign="middle">type="file"</td>
+		<td align="center" valign="middle" align="justify">It is the input element of file type and class "form-control" that provides for the loading of the desired file</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
