@@ -913,6 +913,7 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 </table>
 </br>
 </br>
+
 ## 2.5	Example of use
 </br>
 
@@ -920,11 +921,45 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 
 <div class="row user-select-none">
 	<div class="col-7 col-md-5 col-lg-4">
-		<label>Some document</label>
+		<label>Identity card</label>
 		<div class="input-group"
 			 data-component="file-upload"
 			 data-group="UserDocuments"
 			 data-partial-url-params='{"User_Id":1005,"Doc_Type":1}'
+			 data-url-params="">
+			<input type="file" class="form-control" required /> <!-- adding required attribute if the document is considered mandatory -->
+			<span class="form-control rounded-3 d-none" data-file-name></span>
+			<span class="bi ms-2 mt-auto mb-auto p-0 text-danger d-none" data-role="error"></span>
+			<span class="mt-auto mb-auto ms-2 d-none" data-role="progress-bar"></span>
+			<img class="hourglass hourglass-sm d-none" data-role="hourglass" />
+			<span class="btn btn-close mt-auto mb-auto ms-2 d-none" data-role="abort"></span>
+			<span class="btn mt-auto mb-auto fs-5 ms-2 p-0 bi bi-download d-none" data-role="download" ></span>
+			<span class="btn mt-auto mb-auto ms-2 p-0 bi bi-trash d-none" data-role="delete"></span>
+		</div>
+	</div>
+	<div class="col-7 col-md-5 col-lg-4">
+		<label>Identity card</label>
+		<div class="input-group"
+			 data-component="file-upload"
+			 data-group="Health card"
+			 data-partial-url-params='{"User_Id":1005,"Doc_Type":2}'
+			 data-url-params="">
+			<input type="file" class="form-control" required /> <!-- adding required attribute if the document is considered mandatory -->
+			<span class="form-control rounded-3 d-none" data-file-name></span>
+			<span class="bi ms-2 mt-auto mb-auto p-0 text-danger d-none" data-role="error"></span>
+			<span class="mt-auto mb-auto ms-2 d-none" data-role="progress-bar"></span>
+			<img class="hourglass hourglass-sm d-none" data-role="hourglass" />
+			<span class="btn btn-close mt-auto mb-auto ms-2 d-none" data-role="abort"></span>
+			<span class="btn mt-auto mb-auto fs-5 ms-2 p-0 bi bi-download d-none" data-role="download" ></span>
+			<span class="btn mt-auto mb-auto ms-2 p-0 bi bi-trash d-none" data-role="delete"></span>
+		</div>
+	</div>
+	<div class="col-7 col-md-5 col-lg-4">
+		<label>Identity card</label>
+		<div class="input-group"
+			 data-component="file-upload"
+			 data-group="Proof of residence"
+			 data-partial-url-params='{"User_Id":1005,"Doc_Type":3}'
 			 data-url-params="">
 			<input type="file" class="form-control" required /> <!-- adding required attribute if the document is considered mandatory -->
 			<span class="form-control rounded-3 d-none" data-file-name></span>
