@@ -484,9 +484,9 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td align="center" valign="middle" align="justify">It can show two icons: The first one at an http status code 401, to signal the user's failure to authenticate, the second one for all other http statuses other than 200</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle" align="justify"></td>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="progress-bar"</td>
+		<td align="center" valign="middle" align="justify">Shows the percentage of progression in both the upload and download phases</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
