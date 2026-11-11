@@ -493,6 +493,21 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td align="center" valign="middle">data-role="hourglass"</td>
 		<td align="center" valign="middle" align="justify">Show an hourglass during the intermediate upload and download processing stages</td>
 	</tr>
+	<tr>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="abort"</td>
+		<td align="center" valign="middle" align="justify">This is the button to cancel the upload and download process</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle" align="justify"></td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle" align="justify"></td>
+	</tr>
 </table>
 
 
