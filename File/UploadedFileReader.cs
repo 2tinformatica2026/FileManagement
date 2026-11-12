@@ -1,4 +1,4 @@
-﻿namespace [Application Name].File
+﻿namespace FileManagement.File
 {
     public class UploadedFileReader
     {
