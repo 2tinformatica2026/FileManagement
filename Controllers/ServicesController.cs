@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using PQPO.httpResponseMessage;
-using PQPO.Models;
+using FileManagement.Models;
 using System.Diagnostics;
-namespace PQPO.Controllers
+namespace FileManagement.Controllers
 {
     public class ServicesController : Controller
     {
