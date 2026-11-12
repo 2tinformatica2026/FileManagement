@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-namespace FileUpload.Models
+namespace FileManagement.Models
 {
     public class AuthorizationDb : DbContext
     {
