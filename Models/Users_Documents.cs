@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PQPO.Database
+namespace FileManagement.Database
 {
     [Table("Users_Documents")]
     [PrimaryKey(nameof(Doc_Id),nameof(Doc_Type),nameof(User_Id))]
