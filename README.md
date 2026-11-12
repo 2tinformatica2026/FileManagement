@@ -980,9 +980,9 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 	const fu = new FileUpload();
 	fu.RegisterTheGroup('',
 	                    'UserDocuments',
-	                    '/SaveTemporaryAttach',
-	                    '/RemoveTemporaryAttach',
-	                    '/DownloadTemporaryAttach');
+	                    '/SaveTemporaryDocument',
+	                    '/RemoveTemporaryDocument',
+	                    '/DownloadTemporaryDocument');
 </script>
 ```
 
