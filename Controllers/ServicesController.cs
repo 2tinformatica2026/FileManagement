@@ -19,32 +19,33 @@ namespace FileManagement.Controllers
 
         [HttpPost]
         [Route("Services/SaveTemporaryDocument")]
-        public ActionResult SaveTemporaryDocument(IFormFile file, int User_Id, int Doc_Type)
+        public async Task<ActionResult> SaveTemporaryDocument(IFormFile file, int User_Id, int Doc_Type)
         {
             if (file != null)
             {
                 using (var db = new AuthorizationDb())
                 {
-                    var DocId = (db.Users_Documents.
-                                Where(x => x.User_Id == User_Id && x.Doc_Type == Doc_Type).
-                                Select(x => (int?)x.Doc_Id).
-                                Max() ?? 0) + 1;
+                    var DocId = (await db.Users_Documents.
+                                 Where(x => x.User_Id == User_Id && x.Doc_Type == Doc_Type).
+                                 Select(x => (int?)x.Doc_Id).
+                                 MaxAsync() ?? 0) + 1;
                     db.Users_Documents.Add(new Users_Documents()
                     {
                         Doc_Id = DocId,
-                        Doc_Type = DocType,
-                        User_Id = UserId,
+                        Doc_Type = Doc_Type,
+                        User_Id = User_Id,
                         File_Buffer = UploadedFileReader.ToArray(file),
                         File_Name = file.FileName,
                         Mime_Type = file.ContentType
                     });
-                    db.SaveChanges();
-                    return Ok("Doc_Id=" + DocId.ToString() + "&Doc_Type=" + DocType.ToString() + "&User_Id=" + UserId.ToString());
+                    await db.SaveChangesAsync();
+                    return Ok("Doc_Id=" + DocId.ToString() +
+                              "&Doc_Type=" + Doc_Type.ToString() +
+                              "&User_Id=" + User_Id.ToString());
                 }
             }
             return Ok();
         }
-
        
     }
 }
