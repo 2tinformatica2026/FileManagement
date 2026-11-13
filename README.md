@@ -434,7 +434,7 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<div class="input-group"
 			 data-component="file-upload"
 			 data-group="Contract_Annexes"
-			 data-partial-url-params='{"Contract_Id":1005,"Customer_Id":"1000","Doc_Type":1}'
+			 data-partial-url-params='{"User_Id":"1000","Doc_Type":1}'
 			 data-url-params="">
 			<input type="file" class="form-control" required /> <!-- adding required attribute if the document is considered mandatory -->
 			<span class="form-control rounded-3 d-none" data-file-name></span>
