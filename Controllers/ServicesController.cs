@@ -19,14 +19,14 @@ namespace FileManagement.Controllers
 
         [HttpPost]
         [Route("Services/SaveTemporaryDocument")]
-        public ActionResult SaveTemporaryDocument(IFormFile file, int UserId, int DocType)
+        public ActionResult SaveTemporaryDocument(IFormFile file, int User_Id, int Doc_Type)
         {
             if (file != null)
             {
                 using (var db = new AuthorizationDb())
                 {
                     var DocId = (db.Users_Documents.
-                                Where(x => x.User_Id == UserId && x.Doc_Type == DocType).
+                                Where(x => x.User_Id == User_Id && x.Doc_Type == Doc_Type).
                                 Select(x => (int?)x.Doc_Id).
                                 Max() ?? 0) + 1;
                     db.Users_Documents.Add(new Users_Documents()
