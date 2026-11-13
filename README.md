@@ -282,6 +282,14 @@ data-partial-url-params = '{"Message_Id":1025}' or data-partial-url-params = "Me
 
 data-url-params = '{"Message_Id":1025,"File_Id":12}' or data-url-params = "Message_Id=1025&File_Id=12" </br></br>
 
+Important, the parameters stored within the two aforementioned attributes must match the following web services by name and type:
+
+- "data-partial-url-params" => insert
+
+- "data-url-params" => download and delete 
+</br>
+</br>
+
 Below is a minimal example of the three required web services.</br><br>
 
 ```csharp
