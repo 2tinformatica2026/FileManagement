@@ -25,7 +25,7 @@ namespace FileManagement.Controllers
             {
                 try
                 {
-                    db.Users_Documents.Add(new Users_Documents()
+                    db.Users_Documents.Remove(new Users_Documents()
                     {
                         Doc_Id = Doc_Id,
                         Doc_Type = Doc_Type,
