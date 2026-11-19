@@ -27,7 +27,7 @@ namespace FileManagement.Controllers
                 {
                     db.Users_Documents.Add(new Users_Documents()
                    {
-                        Doc_Id = DocId,
+                        Doc_Id = Doc_Id,
                         Doc_Type = Doc_Type,
                         User_Id = User_Id,
                     });
