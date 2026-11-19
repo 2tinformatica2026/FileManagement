@@ -18,8 +18,8 @@ namespace FileManagement.Controllers
         }
 
         [HttpDelete]
-        [Route("Services/DeleteTemporaryDocument")]
-        public ActionResult DeleteTemporaryDocument(int User_Id, int Doc_Type, int Doc_Id)
+        [Route("Services/RemoveTemporaryDocument")]
+        public ActionResult RemoveTemporaryDocument(int User_Id, int Doc_Type, int Doc_Id)
         {
             using (var db = new AuthorizationDb())
             {
