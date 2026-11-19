@@ -19,19 +19,19 @@ namespace FileManagement.Controllers
 
         [HttpDelete]
         [Route("Services/RemoveTemporaryDocument")]
-        public ActionResult RemoveTemporaryDocument(int User_Id, int Doc_Type, int Doc_Id)
+        public async Task<ActionResult> RemoveTemporaryDocument(int User_Id, int Doc_Type, int Doc_Id)
         {
             using (var db = new AuthorizationDb())
             {
                 try
                 {
                     db.Users_Documents.Add(new Users_Documents()
-                   {
+                    {
                         Doc_Id = Doc_Id,
                         Doc_Type = Doc_Type,
                         User_Id = User_Id,
                     });
-                    db.SaveChanges();
+                    await db.SaveChangesAsync();
                     return Ok();
                 }
                 catch (DbUpdateConcurrencyException)
