@@ -17,6 +17,34 @@ namespace FileManagement.Controllers
             _configuration = configuration;
         }
 
+        [HttpDelete]
+        [Route("Services/DeleteTemporaryDocument")]
+        public ActionResult DeleteTemporaryDocument(int User_Id, int Doc_Type, int Doc_Id)
+        {
+            using (var db = new AuthorizationDb())
+            {
+                try
+                {
+                    db.Users_Documents.Add(new Users_Documents()
+                   {
+                        Doc_Id = DocId,
+                        Doc_Type = Doc_Type,
+                        User_Id = User_Id,
+                    });
+                    db.SaveChanges();
+                    return Ok();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent);
+                }
+                catch
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError);
+                }
+            }
+        }
+
         [HttpPost]
         [Route("Services/SaveTemporaryDocument")]
         public async Task<ActionResult> SaveTemporaryDocument(IFormFile file, int User_Id, int Doc_Type)
@@ -31,8 +59,6 @@ namespace FileManagement.Controllers
                                      Where(x => x.User_Id == User_Id && x.Doc_Type == Doc_Type).
                                      Select(x => (int?)x.Doc_Id).
                                      MaxAsync() ?? 0) + 1;
-
-                        DocId = 1;
 
                         db.Users_Documents.Add(new Users_Documents()
                         {
