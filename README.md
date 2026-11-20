@@ -10,7 +10,7 @@ Our solution is based on 5 logical elements:
 - A net core class;
 - Three service patterns for implementing insert, delete, and download operations.
 
-The reference development environment is Asp net core 8, Bootstrap 5.3x and the 2tInfrastructure.css stylesheet.
+The reference development environment is Asp net core 8, Microsoft.EntityFrameworkCore.SqlServer, Bootstrap 5.3x, 2tInfrastructure.js and the 2tInfrastructure.css stylesheet.
 
 ## 2	FileUpload control
 
