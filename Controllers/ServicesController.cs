@@ -17,6 +17,20 @@ namespace FileManagement.Controllers
             _configuration = configuration;
         }
 
+        [HttpGet]
+        [Route("Services/DownloadTemporaryDocument")]
+        public async Task<ActionResult> DownloadTemporaryDocument(int User_Id, int Doc_Type, int Doc_Id)
+        {
+            using(var db = new AuthorizationDb())
+            {
+                var document = await db.Users_Documents.
+                    Where(x=> x.User_Id==User_Id && x.Doc_Type==Doc_Type && x.Doc_Id==Doc_Id).
+                    FirstOrDefaultAsync();
+                if (document == null) return StatusCode(StatusCodes.Status204NoContent);
+                return File(document.File_Buffer, document.Mime_Type, document.File_Name);
+            }
+        }
+
         [HttpDelete]
         [Route("Services/RemoveTemporaryDocument")]
         public async Task<ActionResult> RemoveTemporaryDocument(int User_Id, int Doc_Type, int Doc_Id)
@@ -83,6 +97,5 @@ namespace FileManagement.Controllers
             }
             return Ok();
         }
-      
     }
 }
