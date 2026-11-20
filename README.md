@@ -878,6 +878,7 @@ class FileUpload {
     }
 }
 
+
 ```
 </br>
 The class implements 7 private methods (preceded by the # character) and 3 public methods:
