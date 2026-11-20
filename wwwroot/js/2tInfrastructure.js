@@ -143,9 +143,6 @@ class FileUpload {
                         params.file.value = '';
                         params.downloadbutton.classList.remove('d-none');
                         params.container.dataset.urlParams = xhr.response;
-                        var fuSuccessfullySaved = new Event('fuSuccessfullySaved', { bubbles: true, cancelable: true, composed: false })
-                        fuSuccessfullySaved.group = params.Group;
-                        document.dispatchEvent(fuSuccessfullySaved);
                         break;
                     case 401:// Unauthorized
                         params.error.classList.add('bi-sign-do-not-enter');
@@ -295,8 +292,6 @@ class FileUpload {
                 params.hourglass.classList.add('d-none');
                 switch (xhr.status) {
                     case 200: case 204:
-                        var fuFileDeleted = new Event('deleted.2t.fileupload', { bubbles: true, cancelable: true, composed: false })
-                        fuFileDeleted.Group = params.Group;
                         params.container.dataset.urlParams = '';
                         params.filename.innerText = '';
                         params.filename.classList.add('d-none');
@@ -307,7 +302,6 @@ class FileUpload {
                             params.error.classList.remove('d-none');
                         }
                         params.file.focus();
-                        document.dispatchEvent(fuFileDeleted);
                         break;
                     case 401:
                         params.error.classList.add('bi-sign-do-not-enter');
