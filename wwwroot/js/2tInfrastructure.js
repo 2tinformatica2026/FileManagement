@@ -8,7 +8,7 @@ class FileUpload {
                 var container = e.target.parentElement;
                 var params = this.#BaseParameters(Group, Token, DownloadUrl, container);
                 this.#download(params);
-            });
+            })
             //delete
             const deletebutton = container.querySelector('span[data-role="delete"]');
             deletebutton.addEventListener('click', (e)=> {
@@ -19,7 +19,7 @@ class FileUpload {
                 fuBeforeDeleteFile.params = params;
                 document.dispatchEvent(fuBeforeDeleteFile);
                 if (!fuBeforeDeleteFile.cancel) { this.delete(params); }
-            });
+            })
             //upload
             const file = container.querySelector('input[type="file"]');
             file.addEventListener('change', (e)=> {
@@ -27,7 +27,7 @@ class FileUpload {
                 const container = file.parentElement;
                 const params = this.#BaseParameters(Group, Token, InsertUrl, container);
                 this.#upload(params);
-            });
+            })
             //set initial configuration
             const filename = container.querySelector('span[data-file-name]');
             if (file.getAttribute('required') != null) filename.classList.add('is-valid');
@@ -36,7 +36,7 @@ class FileUpload {
                 filename.classList.remove('d-none');
                 deletebutton.classList.remove('d-none');
                 btnDownload.classList.remove('d-none');
-            }
+            }            
         });
     }
     #KeyToURLSearchParams(key) {
@@ -81,14 +81,15 @@ class FileUpload {
             deletebutton.classList.remove('d-none');
 
         }
-        if (urlParams != null) container.setAttribute('data-url-params', urlParams);
+        if (urlParams != null) container.dataset.urlParams = urlParams;
     }
     #BaseParameters(group, token, ServiceUrl, container) {
         var Parameters = {
             group: group,
             token: token,
             ServiceUrl: ServiceUrl,
-            container: container
+            container: container,
+            filenameText: container.querySelector('span[data-file-name]').innerText
         };
         return Parameters;
     }
@@ -148,6 +149,11 @@ class FileUpload {
                         break;
                     case 401:// Unauthorized
                         params.error.classList.add('bi-sign-do-not-enter');
+                        params.error.classList.remove('d-none');
+                        params.file.value = '';
+                        break;
+                    case 409:// Conflict
+                        params.error.classList.add('bi-file-earmark-lock2');
                         params.error.classList.remove('d-none');
                         params.file.value = '';
                         break;
@@ -288,7 +294,7 @@ class FileUpload {
             xhr.onloadend = function () {
                 params.hourglass.classList.add('d-none');
                 switch (xhr.status) {
-                    case 200:
+                    case 200: case 204:
                         var fuFileDeleted = new Event('deleted.2t.fileupload', { bubbles: true, cancelable: true, composed: false })
                         fuFileDeleted.Group = params.Group;
                         params.container.dataset.urlParams = '';
@@ -296,6 +302,10 @@ class FileUpload {
                         params.filename.classList.add('d-none');
                         params.file.value = '';
                         params.file.classList.remove('d-none');
+                        if (xhr.status == 204) {
+                            params.error.classList.add('bi-ban');
+                            params.error.classList.remove('d-none');
+                        }
                         params.file.focus();
                         document.dispatchEvent(fuFileDeleted);
                         break;
