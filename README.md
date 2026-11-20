@@ -931,6 +931,26 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 	</tr>
 </table>
 </br>
+<strong><ins>events</ins></strong>
+</br>
+</br>
+
+<table>
+	<tr>
+		<th><strong>Method</strong></th>
+		<th width="200"><strong>Trigger event</strong></th>
+		<th width="50"><strong>Event name</strong></th>
+		<th><strong>Description</strong></th>
+	</tr>
+	<tr>
+		<td>RegisterTheGroup</td>
+		<td>deletebutton 'click'</td>
+		<td>'delete.2t.fileupload'</td>
+		<td>It is triggered before invoking the "Delete" method to allow the implementation of a confirmation window for the user.</td>
+	</tr>
+</table>
+
+</br>
 </br>
 
 ## 2.5	Example of use
