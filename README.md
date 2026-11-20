@@ -376,7 +376,7 @@ The Javascript FileUpload class handles the following http status codes:</br>
 	<tr>
 		<td></td>
 		<td></td>
-		<td valign="middle">Process terminated successfully but record no longer exists. The control will be configured in Upload mode by reporting the anomaly graphically <img width="20" height="20" alt="image 08" src="https://github.com/user-attachments/assets/d79ed232-f1e6-4671-a424-9c18d8b76ac9" /></td>
+		<td valign="middle">Process completed successfully but the record was no longer present. The control will be configured in Upload mode by reporting the anomaly graphically <img width="20" height="20" alt="image 08" src="https://github.com/user-attachments/assets/d79ed232-f1e6-4671-a424-9c18d8b76ac9" /></td>
 		<td align="center">204</td>
 	</tr>
 	<tr>
@@ -404,7 +404,13 @@ The Javascript FileUpload class handles the following http status codes:</br>
 		<td></td>
 		<td></td>
 		<td>Process terminated successfully. The control will configure itself in Upload mode</td>
-		<td align="center">200, 204</td>
+		<td align="center">200</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">Process completed successfully but the record was no longer present. The control will be configured in Upload mode by reporting the anomaly graphically <img width="20" height="20" alt="image 08" src="https://github.com/user-attachments/assets/d79ed232-f1e6-4671-a424-9c18d8b76ac9" /></td>
+		<td align="center">204</td>
 	</tr>
 	<tr>
 		<td></td>
