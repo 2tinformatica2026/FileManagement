@@ -1024,7 +1024,6 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 </script>
 ```
 </br>
-</br>
 
 ## 3	FileDownload control
 
