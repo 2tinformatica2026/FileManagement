@@ -1119,11 +1119,6 @@ foreach(var el in Model.Documents)
 		<td align="center" valign="middle" align="justify">It is the complete key of the record in json format or in url params format</td>
 	</tr>
 	<tr>
-		<td align="center" valign="middle">input</td>
-		<td align="center" valign="middle">type="file"</td>
-		<td align="center" valign="middle" align="justify">It is the input element of file type and class "form-control" that provides for the loading of the desired file</td>
-	</tr>
-	<tr>
 		<td align="center" valign="middle">span</td>
 		<td align="center" valign="middle">data-file-name</td>
 		<td align="center" valign="middle" align="justify">This element is entrusted with the task of indicating the existence of the file by showing its name and extension. When registering the control via FileUpload's RegisterTheGroup method, the presence of the file name will place the control state in download and delete modes with the display of the relevant buttons</td>
