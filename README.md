@@ -1114,8 +1114,8 @@ foreach(var el in Model.Documents)
 		<td align="center" valign="middle" align="justify">It is intended to group one or more containers during the call to the RegisterTheGroup(Token, Group, InsertUrl, DeleteUrl, DownloadUrl) method of the Javascript FileUpload class</td>
 	</tr>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle">data-delete-enabled</td>
-		<td align="center" valign="middle" align="justify">"yes"=delete enabled; "no"=delete disabled</td>	
+		<td align="center" valign="middle">data-delete-enabled</td> 
+		<td align="center" valign="middle" align="justify">"yes" => delete enabled; "no" => delete disabled</td>	
 	<tr>
 	</tr>
 	<tr>
@@ -1126,7 +1126,7 @@ foreach(var el in Model.Documents)
 	<tr>
 		<td align="center" valign="middle">span</td>
 		<td align="center" valign="middle">data-file-name</td>
-		<td align="center" valign="middle" align="justify">This element is entrusted with the task of indicating the existence of the file by showing its name and extension. When registering the control via FileUpload's RegisterTheGroup method, the presence of the file name will place the control state in download and delete modes with the display of the relevant buttons</td>
+		<td align="center" valign="middle" align="justify">It is the name assigned to the document or the name of the file with its extension</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle">span</td>
