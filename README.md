@@ -1,14 +1,14 @@
-# Complete infrastructure for file upload and download
+⁸# Complete infrastructure for file upload and download
 
 ## 1  Introduction
 
 Our solution is based on 5 logical elements:
 
-- Two Javascript classes;
-- Two html structures;
-- A stylesheet;
-- A net core class;
-- Three service patterns for implementing insert, delete, and download operations.
+- 2 Javascript classes;
+- 2 html structures;
+- 1 stylesheet;
+- 1 net core class;
+- 3 services patterns for implementing insert, delete, and download operations.
 
 The reference development environment is Asp net core 8, Microsoft.EntityFrameworkCore.SqlServer, Bootstrap 5.3x, 2tInfrastructure.js and the 2tInfrastructure.css stylesheet.
 
