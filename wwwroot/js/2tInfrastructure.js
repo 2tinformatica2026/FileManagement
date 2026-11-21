@@ -542,6 +542,12 @@ class FileDownload {
                     params.filename.classList.add('text-decoration-line-through');
                     document.dispatchEvent(fdDeleteSuccess);
                     break;
+                case 401:
+                    params.error.classList.add('bi-sign-do-not-enter');
+                    params.error.classList.remove('d-none');
+                    params.downloadbutton.classList.remove('d-none');
+                    if (params.deletebutton != null) setTimeout(function () { params.deletebutton.classList.remove('d-none') }, 100);
+                    break;
                 default:
                     params.downloadbutton.classList.remove('d-none');
                     params.deletebutton.classList.remove('d-none');
