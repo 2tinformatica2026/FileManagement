@@ -1070,7 +1070,7 @@ foreach(var el in Model.Documents)
 
 </table>
 
-<!-- Example with single control -->
+<!-- Example with separate control -->
 <div class="row">
 	<div class="mt-4 d-flex flex-row align-items-center justify-content-start"
 	     data-component="filedownload"
