@@ -1,4 +1,4 @@
-⁸# Complete infrastructure for file upload and download
+# Complete infrastructure for file upload and download
 
 ## 1  Introduction
 
