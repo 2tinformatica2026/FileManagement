@@ -1113,6 +1113,11 @@ foreach(var el in Model.Documents)
 		<td align="center" valign="middle">data-group</td>
 		<td align="center" valign="middle" align="justify">It is intended to group one or more containers during the call to the RegisterTheGroup(Token, Group, InsertUrl, DeleteUrl, DownloadUrl) method of the Javascript FileUpload class</td>
 	</tr>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle">data-delete-enabled</td>
+		<td align="center" valign="middle" align="justify">"yes"=delete enabled; "no"=delete disabled</td>	
+	<tr>
+	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
 		<td align="center" valign="middle">data-url-params</td>
