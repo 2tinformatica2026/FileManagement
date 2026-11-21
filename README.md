@@ -1043,7 +1043,7 @@ The control container can be either the ul tr element of a table or a div to fac
 	<tr>
 		<th><strong>Title</strong></th>
 		<th><strong>Owner</strong></th>
-		<th><strong>Insert Date</strong></th>
+		<th><strong>Date added</strong></th>
 		<th></th>
 	</tr>
 foreach(var el in Model.Documents)
