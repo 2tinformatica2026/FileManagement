@@ -1027,8 +1027,10 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 
 ## 3	FileDownload control
 
-The Javascript FileDownload class implements full management of downloading and optionally deleting a file. The user interface displays the loading progression:</br>
+The Javascript FileDownload class implements full download and optionally file deletion management. The user interface displays the loading progression:</br>
 
-<img width="535" height="174" alt="01" src="https://github.com/user-attachments/assets/44cb30f5-dc82-489b-812b-777c0af69e9f" />
+<img width="535" height="174" alt="01" src="https://github.com/user-attachments/assets/44cb30f5-dc82-489b-812b-777c0af69e9f" /></br>
+
+The control container can be either the ul tr element of a table or a div to facilitate its integration into user interfaces. </br>
 
 
