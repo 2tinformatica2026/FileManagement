@@ -1096,6 +1096,75 @@ foreach(var el in Model.Documents)
 </script>
 
 ```
+<strong><ins>Elements description</ins></strong></br></br>
+<table>
+	<tr>
+		<th align="center" width="150"><strong>html element</strong></th>
+		<th align="center" width="250"><strong>attribute name and value</strong></th>
+		<th align="center"><strong>purpose</strong></th>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">div</td>
+		<td align="center" valign="middle">data-component="file-upload"</td>
+		<td align="center" valign="middle" align="justify">This is the container control. The Javascript FileUpload class will select all elements with these characteristics within the DOM</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle">data-group</td>
+		<td align="center" valign="middle" align="justify">It is intended to group one or more containers during the call to the RegisterTheGroup(Token, Group, InsertUrl, DeleteUrl, DownloadUrl) method of the Javascript FileUpload class</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle">data-partial-url-params</td>
+		<td align="center" valign="middle" align="justify">It is the partial key required by the web service "InsertUrl" named in the call of the previous method "RegisterTheGroup"</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle"></td>
+		<td align="center" valign="middle">data-url-params</td>
+		<td align="center" valign="middle" align="justify">It is the complete key of the inserted record that must be returned by the previous web service either in json format or in url params format</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">input</td>
+		<td align="center" valign="middle">type="file"</td>
+		<td align="center" valign="middle" align="justify">It is the input element of file type and class "form-control" that provides for the loading of the desired file</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-file-name</td>
+		<td align="center" valign="middle" align="justify">This element is entrusted with the task of indicating the existence of the file by showing its name and extension. When registering the control via FileUpload's RegisterTheGroup method, the presence of the file name will place the control state in download and delete modes with the display of the relevant buttons</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="error"</td>
+		<td align="center" valign="middle" align="justify">It can show two icons: The first one at an http status code 401, to signal the user's failure to authenticate, the second one for all other http statuses other than 200</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="progress-bar"</td>
+		<td align="center" valign="middle" align="justify">Shows the percentage of progression in both the upload and download phases</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">img</td>
+		<td align="center" valign="middle">data-role="hourglass"</td>
+		<td align="center" valign="middle" align="justify">Show an hourglass during the intermediate upload and download processing stages</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="abort"</td>
+		<td align="center" valign="middle" align="justify">This is the button to cancel the upload and download process</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="download"</td>
+		<td align="center" valign="middle" align="justify">It's the button to start the download</td>
+	</tr>
+	<tr>
+		<td align="center" valign="middle">span</td>
+		<td align="center" valign="middle">data-role="delete"</td>
+		<td align="center" valign="middle" align="justify">It's the button to delete the file</td>
+	</tr>
+</table>
+</br>
 </br>
 A consideration of the role given to the span element with data-filename attribute for both FileUpload and FileDownload controls.</br>
 The name shown to the user does not necessarily have to match the name of the file with the extension, since this information is provided by the download web service, but can be set as any label as desired.</br>
