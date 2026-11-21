@@ -1100,7 +1100,7 @@ foreach(var el in Model.Documents)
 A consideration of the role given to the span element with data-filename attribute for both FileUpload and FileDownload controls.</br>
 The name shown to the user does not necessarily have to match the name of the file with the extension, since this information is provided by the download web service, but can be set as any label as desired.</br>
 
-## 3.2	http status codes managed by the Javascript FileDownload class 
+### 3.2	http status codes managed by the Javascript FileDownload class 
 </br>
 
 
