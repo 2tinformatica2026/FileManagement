@@ -1033,4 +1033,39 @@ The Javascript FileDownload class implements full download and optionally file d
 
 The control container can be either the ul tr element of a table or a div to facilitate its integration into user interfaces. </br>
 
+### 3.1 Html Structure </br>
 
+```cshtml
+
+<table>
+	<tr>
+		<th><strong></strong></th>
+		<th><strong></strong></th>
+		<th><strong></strong></th>
+		<th><strong></strong></th>
+	</tr>
+foreach(var el in Model.Documents)
+{
+	<tr data-component="filedownload"
+	    data-group=""
+	    data-url-params="Year=@Model.Year&Number=@Model.Number&ADoc_Id=@el.Doc_Id"
+	    data-delete-enabled="@if(!el.IsTheOwner) @Html.Raw("no")">
+	    <td data-filename>@el.Title</td>
+	    <td>@el.Owner</td>
+	    <td>@el.Insert_Date</td>
+	    <td>
+	        <div class="d-flex flex-row align-items-center justify-content-start" >
+	            <span class="bi bi-exclamation mt-auto mb-auto p-0 text-danger d-none" data-role="error" ></span>
+	            <span class="btn mt-auto mb-auto fs-5 ms-2 p-0 bi bi-download" data-role="download" ></span>
+	            <span class="btn mt-auto mb-auto ms-2 p-0 bi bi-trash" data-role="delete"></span>
+	            <span class="mt-auto mb-auto ms-2 d-none" data-role="progress-bar" ></span>
+	            <img class="hourglass hourglass-sm ddropdown-hourglass d-none" data-role="hourglass" />
+	            <span class="btn btn-close p-0 ms-2 mt-auto mb-auto d-none" data-role="abort" ></span>
+	        </div>
+	    </td>
+	</tr>
+}	
+
+</table>
+
+```
