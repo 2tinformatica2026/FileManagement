@@ -1070,6 +1070,23 @@ foreach(var el in Model.Documents)
 
 </table>
 
+<!-- Example with single control -->
+<div class="row">
+	<div class="mt-4 d-flex flex-row align-items-center justify-content-start"
+	     data-component="filedownload"
+	     data-group=""
+	     data-delete-enabled="no"
+	     data-url-params="Year=2026&Number=127&Doc_Id=7" >
+	  <span class="mt-auto mb-auto me-2" data-filename>Product list</span>
+	  <span class="bi bi-exclamation-circle mt-auto mb-auto p-0 text-danger d-none" data-role="error"></span>
+	  <span class="btn mt-auto mb-auto fs-5 ms-2 p-0 bi bi-download" data-role="download" ></span>
+	  <span class="btn mt-auto mb-auto ms-2 p-0 bi bi-trash" data-role="delete"></span>
+	  <span class="mt-auto mb-auto ms-2 d-none" data-role="progress-bar" ></span>
+	  <img class="hourglass hourglass-sm d-none" data-role="hourglass" />
+	  <span class="btn btn-close p-0 ms-2 mt-auto mb-auto d-none" data-role="abort" ></span>
+	</div>
+</div>
+
 <script>
 	const fd = new FileDownload()
 	fd.RegisterTheGroup('',
