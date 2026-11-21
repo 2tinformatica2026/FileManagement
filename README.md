@@ -80,7 +80,7 @@ The basic tabular structure is as follows:
 PK 1…n represent the primary key.
 </br>
 
-## 2.1	Operating logic
+### 2.1	Operating logic
 
 The operating logic arises from observing the use cases of this type of control within user interfaces. Below are three of the most common cases:
 
@@ -325,7 +325,7 @@ public ActionResult SaveTemporaryDocument(IFormFile file, int User_Id, int Doc_T
   return Ok(“User_Id=” + User_Id.ToString() + “&Doc_Type =” + Doc_Type.ToString()  +  “&Doc_Number=” + number.ToString());
 }
 ```
-## 2.2	http status codes managed by the Javascript FileUpload class
+### 2.2	http status codes managed by the Javascript FileUpload class
 
 The Javascript FileUpload class handles the following http status codes:</br>
 <table>
@@ -430,7 +430,7 @@ The Javascript FileUpload class handles the following http status codes:</br>
 </br>
 </br>
 
-## 2.3	Html Structure
+### 2.3	Html Structure
 
 ```html
 
@@ -526,7 +526,7 @@ The Javascript FileUpload class handles the following http status codes:</br>
 </br>
 </br>
 
-## 2.4	Javascript FileUpload
+### 2.4	Javascript FileUpload
 </br>
 
 ```javascript
@@ -953,7 +953,7 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 </br>
 </br>
 
-## 2.5	Example of use
+### 2.5	Example of use
 </br>
 <strong><ins>ER diagram</ins></strong></br></br>
 <img width="801" height="201" alt="image 10" src="https://github.com/user-attachments/assets/f8cfc666-179c-4a94-b1f6-bf0f09657c1b" />
@@ -1102,5 +1102,106 @@ The name shown to the user does not necessarily have to match the name of the fi
 
 ### 3.2	http status codes managed by the Javascript FileDownload class 
 </br>
-
+The Javascript FileUpload class handles the following http status codes:</br>
+<table>
+	<tr>
+		<th><strong>Service</strong></th>
+		<th><strong>HTTP Method</strong></th>
+		<th><strong>Triggering process</strong></th>
+		<th><strong>HTTP status code</strong></th>
+	</tr>
+	<tr>
+		<td align="center">Upload</td>
+		<td align="center">Post</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>Process successfully terminated</td>
+		<td align="center">200</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">unauthorized user <img width="20" height="20" alt="image 07" src="https://github.com/user-attachments/assets/5860cf44-2532-4adb-8eec-f1d16eb6193d" /></td>
+		<td align="center">401</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">
+			Failed process <img width="20" height="20" alt="image 09" src="https://github.com/user-attachments/assets/2451459d-301b-47bd-b04a-b91529e50ccb" />
+		</td>
+		<td align="center">All other status codes</td>
+	</tr>
+		<tr>
+		<td align="center">Download</td>
+		<td align="center">Get</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>Process successfully terminated</td>
+		<td align="center">200</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">Process completed successfully but the record was no longer present. <img width="18" height="18" alt="image 08" src="https://github.com/user-attachments/assets/d79ed232-f1e6-4671-a424-9c18d8b76ac9" /></td>
+		<td align="center">204</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">unauthorized user <img width="20" height="20" alt="image 07" src="https://github.com/user-attachments/assets/5860cf44-2532-4adb-8eec-f1d16eb6193d" /></td>
+		<td align="center">401</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">
+			Failed process <img width="20" height="20" alt="image 09" src="https://github.com/user-attachments/assets/2451459d-301b-47bd-b04a-b91529e50ccb" />
+		</td>
+		<td align="center">All other status codes</td>
+	</tr>
+	</tr>
+		<tr>
+		<td align="center">Delete</td>
+		<td align="center">Delete</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>Process terminated successfully. The control will configure itself in Upload mode</td>
+		<td align="center">200</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">Process completed successfully but the record was no longer present. <img width="18" height="18" alt="image 08" src="https://github.com/user-attachments/assets/d79ed232-f1e6-4671-a424-9c18d8b76ac9" /></td>
+		<td align="center">204</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">unauthorized user <img width="20" height="20" alt="image 07" src="https://github.com/user-attachments/assets/5860cf44-2532-4adb-8eec-f1d16eb6193d" /></td>
+		<td align="center">401</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td valign="middle">
+			Failed process <img width="20" height="20" alt="image 09" src="https://github.com/user-attachments/assets/2451459d-301b-47bd-b04a-b91529e50ccb" />
+		</td>
+		<td align="center">All other status codes</td>
+	</tr>
+</table>
+</br>
+</br>
 
