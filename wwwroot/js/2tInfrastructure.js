@@ -353,3 +353,203 @@ class FileUpload {
         return result;
     }
 }
+
+class FileDownload {
+    #KeyToURLSearchParams(key) {
+        var result = '';
+        key = key.trim();
+        if (key != '') {
+            if (key.startsWith('{') && key.endsWith('}')) {
+                try {
+                    result = new URLSearchParams(JSON.parse(key)).toString();
+                } catch {
+                    result = null;
+                }
+            } else {
+                try {
+                    result = new URLSearchParams(key).toString();
+                } catch {
+                    result = null;
+                }
+            }
+        }
+        return result;
+    }
+    RegisterTheGroup(Token, Group, DownloadUrl, DeleteUrl) {
+        const containers = document.querySelectorAll('div[data-component="filedownload"][data-group="' + Group + '"],tr[data-component="filedownload"][data-group="' + Group + '"]');
+        containers.forEach(container => {
+            //download
+            var downloadbutton = container.querySelector('span[data-role="download"]');
+            var deletebutton = container.querySelector('span[data-role="delete"]');
+            var deleteEnabled = (container.getAttribute('data-delete-enabled').toLowerCase() != 'no' && DeleteUrl != '');
+            if (!deleteEnabled) deletebutton.classList.add('d-none');
+            downloadbutton.addEventListener('click', (e) => {
+                var downloadbutton = e.target;
+                var container = downloadbutton.closest('[data-component="filedownload"]');
+                var progress = container.querySelector('span[data-role="progress-bar"]');
+                var spinner = container.querySelector('img[data-role="hourglass"]');
+                var abortbutton = container.querySelector('span[data-role="abort"]');
+                var deletebutton = container.querySelector('span[data-role="delete"]');
+                if (deletebutton.classList.contains('d-none')) deletebutton = null;
+                var error = container.querySelector('span[data-role="error"]');
+                if (!error.classList.contains('d-none')) error.classList.add('d-none');
+                var filename = container.querySelector('[data-filename]');
+                var url = DownloadUrl;
+                var urlParams = this.#KeyToURLSearchParams(container.dataset.urlParams);
+                if (urlParams == null) {
+                    error.classList.add('bi-exclamation-circle');
+                    error.classList.remove('d-none');
+                }
+                else {
+                    if (urlParams != '') url = url + '?' + urlParams;
+                    this.#download(url, Token, progress, spinner, abortbutton, downloadbutton, deletebutton, error, filename);
+                }
+            });
+            //delete
+            if (deleteEnabled) {
+                deletebutton.addEventListener('click', (e)=> {
+                    var container = e.target.closest('[data-component="filedownload"]');
+                    var error = container.querySelector('span[data-role="error"]');
+                    var dataurlparams = this.#KeyToURLSearchParams(container.getAttribute('data-url-params'));
+                    if (dataurlparams == null) {
+                        error.classList.add('bi-exclamation-circle');
+                        error.classList.remove('d-none');
+                    } else {
+                        var filename = container.querySelector('[data-filename]');
+                        var downloadbutton = container.querySelector('span[data-role="download"]');
+                        var params = {
+                            group: Group,
+                            url: dataurlparams != '' ? DeleteUrl + '?' + dataurlparams : DeleteUrl,
+                            Token: Token,
+                            filename: filename,
+                            error: error,
+                            deletebutton: e.target,
+                            downloadbutton: downloadbutton
+                        };
+                        var fdBeforeDeleteFile = new Event('delete.2t.filedownload', { bubbles: true, cancelable: true, composed: false })
+                        fdBeforeDeleteFile.cancel = false;
+                        fdBeforeDeleteFile.params = params;
+                        document.dispatchEvent(fdBeforeDeleteFile);
+                        if (!fdBeforeDeleteFile.cancel) { this.delete(params); }
+                    }
+                });
+            } else { deletebutton.classList.add('d-none') }
+        })
+    }
+    #GetFileNameFromHeader(header) {
+        var header = header.split(";");
+        var result = null;
+        for (var i = 0; i < header.length; i++) {
+            if (header[i].match("filename")) {
+                result = header[i].split("=")[1].trim().replace(/^"|"$/g, "");
+                break;
+            }
+        }
+        return result;
+    }
+    #saveOrOpenFile(blob, FileName) {
+        var a = document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.download = String(FileName);
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () { document.body.removeChild(a); window.URL.revokeObjectURL(a.href); }, 0);
+    }
+    #download(url, Token, progressbar, hourglass, abortbutton, downloadbutton, deletebutton, error, filename) {
+        const xhr = new XMLHttpRequest();
+        var perc = 0;
+        var aborted = false;
+        xhr.open('get', url);
+        if (Token != null && Token != '') xhr.setRequestHeader('Authorization', Token);
+        xhr.responseType = 'blob';
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 3 && perc == 0) {
+                hourglass.classList.add('d-none')
+                progressbar.classList.remove('d-none');
+            }
+            if (xhr.readyState == 4) {
+                progressbar.innerHTML = '';
+                progressbar.classList.add('d-none');
+                hourglass.classList.add('d-none');
+                abortbutton.classList.add('d-none');
+                switch (xhr.status) {
+                    case 200://Ok
+                        var RecoveredFileName = this.#GetFileNameFromHeader(xhr.getResponseHeader('content-disposition'));
+                        this.#saveOrOpenFile(xhr.response, RecoveredFileName);
+                        downloadbutton.classList.remove('d-none');
+                        if (deletebutton != null) setTimeout(function () { deletebutton.classList.remove('d-none') }, 100);
+                        break;
+                    case 204://NoContent
+                        filename.classList.add('text-decoration-line-through');
+                        downloadbutton.classList.add('d-none');
+                        if (deletebutton != null) deletebutton.classList.add('d-none');
+                        error.classList.remove('d-none');
+                        break;
+                    case 401: //Unauthorized
+                        error.classList.add('bi-sign-do-not-enter');
+                        error.classList.remove('d-none');
+                        downloadbutton.classList.remove('d-none');
+                        if (deletebutton != null) setTimeout(function () { deletebutton.classList.remove('d-none') }, 100);
+                        break;
+                    default:
+                        downloadbutton.classList.remove('d-none');
+                        if (deletebutton != null) setTimeout(function () { deletebutton.classList.remove('d-none') }, 100);
+                        if (!aborted) {
+                            error.classList.add('bi-exclamation-circle');
+                            error.classList.remove('d-none');
+                        }
+                        break;
+                }
+            }
+        }
+        xhr.onprogress = function (e) {
+            if (e.total > 0) {
+                perc = Math.round((e.loaded / e.total) * 100);
+                progressbar.innerHTML = perc + '%';
+            } else {
+                progressbar.innerHTML = Math.round(e.loaded / 1024) + ' Kb downloaded';
+            }
+        }
+        if (hourglass != null) hourglass.classList.remove('d-none');
+        if (abortbutton != null) {
+            abortbutton.classList.remove('d-none');
+            abortbutton.onclick = function (e) {
+                aborted = true;
+                e.stopPropagation();
+                abortbutton.classList.add('d-none');
+                xhr.abort();
+            };
+        }
+        if (deletebutton != null) deletebutton.classList.add('d-none');
+        downloadbutton.classList.add('d-none');
+        error.classList.remove('bi-exclamation-circle,bi-sign-do-not-enter,text-decoration-line-through');
+        error.classList.add('d-none');
+        xhr.send();
+    }
+    delete(params) {
+        var fdDeleteSuccess = new Event('deleted.2t.filedownload', { bubbles: true, cancelable: true, composed: false })
+        fdDeleteSuccess.Group = params.group;
+        const xhr = new XMLHttpRequest();
+        xhr.open('delete', params.url);
+        if (params.Token != null && params.Token != '') xhr.setRequestHeader('Authorization', params.Token);
+        xhr.onloadend = function () {
+            switch (xhr.status) {
+                case 200:
+                    params.filename.classList.add('text-decoration-line-through');
+                    document.dispatchEvent(fdDeleteSuccess);
+                    break;
+                case 204: //the file don't exist
+                    params.filename.classList.add('text-decoration-line-through');
+                    document.dispatchEvent(fdDeleteSuccess);
+                    break;
+                default:
+                    params.downloadbutton.classList.remove('d-none');
+                    params.deletebutton.classList.remove('d-none');
+                    params.error.classList.remove('d-none');
+            }
+        }
+        params.downloadbutton.classList.add('d-none');
+        params.deletebutton.classList.add('d-none');
+        xhr.send();
+    }
+}
