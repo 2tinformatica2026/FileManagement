@@ -1104,9 +1104,9 @@ foreach(var el in Model.Documents)
 		<th align="center"><strong>purpose</strong></th>
 	</tr>
 	<tr>
-		<td align="center" valign="middle">div</td>
-		<td align="center" valign="middle">data-component="file-upload"</td>
-		<td align="center" valign="middle" align="justify">This is the container control. The Javascript FileUpload class will select all elements with these characteristics within the DOM</td>
+		<td align="center" valign="middle">div \ tr</td>
+		<td align="center" valign="middle">data-component="file-download"</td>
+		<td align="center" valign="middle" align="justify">This is the container control. The Javascript FileDownload class will select all elements with these characteristics within the DOM</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
@@ -1115,13 +1115,8 @@ foreach(var el in Model.Documents)
 	</tr>
 	<tr>
 		<td align="center" valign="middle"></td>
-		<td align="center" valign="middle">data-partial-url-params</td>
-		<td align="center" valign="middle" align="justify">It is the partial key required by the web service "InsertUrl" named in the call of the previous method "RegisterTheGroup"</td>
-	</tr>
-	<tr>
-		<td align="center" valign="middle"></td>
 		<td align="center" valign="middle">data-url-params</td>
-		<td align="center" valign="middle" align="justify">It is the complete key of the inserted record that must be returned by the previous web service either in json format or in url params format</td>
+		<td align="center" valign="middle" align="justify">It is the complete key of the record in json format or in url params format</td>
 	</tr>
 	<tr>
 		<td align="center" valign="middle">input</td>
