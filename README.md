@@ -1068,4 +1068,12 @@ foreach(var el in Model.Documents)
 
 </table>
 
+<script>
+	const fd = new FileDownload()
+	fd.RegisterTheGroup('',
+	                    '',
+	                    '/DownloadTemporaryDocument',
+	                    '/RemoveTemporaryDocument');
+</script>
+
 ```
