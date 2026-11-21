@@ -1037,6 +1037,8 @@ The control container can be either the ul tr element of a table or a div to fac
 
 ```cshtml
 
+<!-- Example with a table -->
+
 <table>
 	<tr>
 		<th><strong></strong></th>
