@@ -1166,7 +1166,7 @@ The name shown to the user does not necessarily have to match the name of the fi
 
 ### 3.2	http status codes managed by the Javascript FileDownload class 
 </br>
-The Javascript FileUpload class handles the following http status codes:</br>
+The Javascript FileDownload class handles the following http status codes:</br></br>
 <table>
 	<tr>
 		<th><strong>Service</strong></th>
