@@ -39,7 +39,6 @@ class FileUpload {
             }            
         });
     }
-    
     #KeyToURLSearchParams(key) {
         var result = '';
         key = key.trim();
@@ -60,7 +59,6 @@ class FileUpload {
         }
         return result;
     }
-    
     write(containerId,fileName, urlParams = null) {
         var container = document.getElementById(containerId);
         var filename = container.querySelector('span[data-file-name]');
@@ -85,7 +83,6 @@ class FileUpload {
         }
         if (urlParams != null) container.dataset.urlParams = urlParams;
     }
-    
     #BaseParameters(group, token, ServiceUrl, container) {
         var Parameters = {
             group: group,
@@ -96,7 +93,6 @@ class FileUpload {
         };
         return Parameters;
     }
-    
     #CompleteParameters(baseParameters) {
         const urlParams = this.#KeyToURLSearchParams(baseParameters.container.dataset.urlParams);
         const partialUrlParams = this.#KeyToURLSearchParams(baseParameters.container.dataset.partialUrlParams);
@@ -118,7 +114,6 @@ class FileUpload {
         };
         return params;
     }
-    
     #upload(BaseParameters) {
         const params = this.#CompleteParameters(BaseParameters);
         if (params.partialUrlParams == null) {
@@ -199,7 +194,6 @@ class FileUpload {
             xhr.send(fileData);
         }
     }
-    
     #download(BaseParameters) {
         const params = this.#CompleteParameters(BaseParameters);
         if (params.urlParams == null) {
@@ -283,7 +277,6 @@ class FileUpload {
             xhr.send();
         }
     }
-    
     delete(BaseParameters) {
         const params = this.#CompleteParameters(BaseParameters);
         if (params.urlParams == null) {
@@ -292,6 +285,8 @@ class FileUpload {
             params.file.removeAttribute('disabled');
             params.file.value = '';
         } else {
+            var fuDeleteSuccess = new Event('deleted.2t.fileupload', { bubbles: true, cancelable: true, composed: false })
+            fuDeleteSuccess.Group = params.group;
             const xhr = new XMLHttpRequest();
             xhr.open('delete', params.ServiceUrl + (params.urlParams == '' ? '' : '?' + params.urlParams));
             if (params.Token != null && params.Token != '') xhr.setRequestHeader('Authorization', params.Token);
@@ -309,6 +304,7 @@ class FileUpload {
                             params.error.classList.remove('d-none');
                         }
                         params.file.focus();
+                        document.dispatchEvent(fuDeleteSuccess);
                         break;
                     case 401:
                         params.error.classList.add('bi-sign-do-not-enter');
@@ -331,7 +327,6 @@ class FileUpload {
             xhr.send();
         }
     }
-    
     #saveOrOpenFile(blob, FileName) {
         var a = document.createElement('a');
         a.href = window.URL.createObjectURL(blob);
@@ -340,7 +335,6 @@ class FileUpload {
         a.click();
         setTimeout(function () { document.body.removeChild(a); window.URL.revokeObjectURL(a.href); }, 0);
     }
-    
     #GetFileNameFromHeader(header) {
         var header = header.split(";");
         var result = null;
