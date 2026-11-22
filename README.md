@@ -948,6 +948,12 @@ The class implements 7 private methods (preceded by the # character) and 3 publi
 		<td>'delete.2t.fileupload'</td>
 		<td>It is triggered before invoking the "Delete" method to allow the implementation of a confirmation window for the user.</td>
 	</tr>
+	<tr>
+		<td>delete</td>
+		<td>deletebutton 'click'</td>
+		<td>'deleted.2t.fileupload'</td>
+		<td>Confirm file deletion.</td>
+	</tr>
 </table>
 
 </br>
