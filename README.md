@@ -818,6 +818,8 @@ class FileUpload {
             params.file.removeAttribute('disabled');
             params.file.value = '';
         } else {
+            var fuDeleteSuccess = new Event('deleted.2t.fileupload', { bubbles: true, cancelable: true, composed: false })
+            fuDeleteSuccess.Group = params.group;
             const xhr = new XMLHttpRequest();
             xhr.open('delete', params.ServiceUrl + (params.urlParams == '' ? '' : '?' + params.urlParams));
             if (params.Token != null && params.Token != '') xhr.setRequestHeader('Authorization', params.Token);
@@ -835,6 +837,7 @@ class FileUpload {
                             params.error.classList.remove('d-none');
                         }
                         params.file.focus();
+                        document.dispatchEvent(fuDeleteSuccess);
                         break;
                     case 401:
                         params.error.classList.add('bi-sign-do-not-enter');
