@@ -1485,7 +1485,6 @@ The Javascript FileDownload class handles the following http status codes:</br><
 <strong><ins>events</ins></strong>
 </br>
 </br>
-
 <table>
 	<tr>
 		<th><strong>Method</strong></th>
@@ -1499,8 +1498,13 @@ The Javascript FileDownload class handles the following http status codes:</br><
 		<td>'delete.2t.filedownload'</td>
 		<td>It is triggered before invoking the "Delete" method to allow the implementation of a confirmation window for the user.</td>
 	</tr>
+	<tr>
+		<td>delete</td>
+		<td>deletebutton 'click'</td>
+		<td>'deleted.2t.filedownload'</td>
+		<td>Confirm file deletion.</td>
+	</tr>
 </table>
-
 </br>
 </br>
 
