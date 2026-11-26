@@ -159,7 +159,8 @@ class FileUpload {
                             params.error.classList.add('bi-exclamation-circle');
                             params.error.classList.remove('d-none');
                             params.file.value = '';
-                        };                        
+                        };     
+                        break;
                 }
             }
             xhr.upload.onloadstart = function () {
@@ -242,6 +243,7 @@ class FileUpload {
                         case 401: // Unauthorized
                             params.error.classList.add('bi-sign-do-not-enter');
                             params.error.classList.remove('d-none');
+                            break;
                         default:
                             setTimeout(function () {
                                 params.downloadbutton.classList.remove('d-none');
@@ -251,6 +253,7 @@ class FileUpload {
                                 params.error.classList.add('bi-exclamation-circle');
                                 params.error.classList.remove('d-none');
                             }
+                            break;
                     }
                 }
             }
@@ -317,6 +320,7 @@ class FileUpload {
                         params.downloadbutton.classList.remove('d-none');
                         params.error.classList.add('bi-exclamation-circle');
                         params.error.classList.remove('d-none');
+                        break;
                 }
             }
             params.error.classList.remove('bi-ban', 'bi-exclamation-circle', 'bi-sign-do-not-enter');
@@ -546,6 +550,7 @@ class FileDownload {
                     params.downloadbutton.classList.remove('d-none');
                     params.deletebutton.classList.remove('d-none');
                     params.error.classList.remove('d-none');
+                    break;
             }
         }
         params.downloadbutton.classList.add('d-none');
